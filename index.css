@@ -1,0 +1,36 @@
+body {
+  background-color: rgb(132, 192, 192);
+  padding: .5rem;
+}
+
+.button1,
+.button2 {
+  height: 30px;
+  width: 30px;
+  outline: none;
+  margin: 10px;
+  border: none;
+  border-radius: 2px;
+}
+
+#main{
+  height: 500px;
+  width: 500px;
+  background-color: antiquewhite;
+
+}
+
+.container{
+  display: flex;
+}
+
+.sidebar{
+  width: 50%;
+}
+.content{
+  width: 50%;
+}
+.container{
+  padding: 1rem;
+  text-align: center;
+}
