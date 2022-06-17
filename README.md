@@ -13,3 +13,4 @@ npm run build
 
 ４．立ち上げ＆閉じる
 ・Ctrl＋Shift＋H（モーダル立ち上げ）
+![image](https://user-images.githubusercontent.com/58338829/174348245-3ea71a0a-bed1-43c7-a214-a3c013b74e91.png)
