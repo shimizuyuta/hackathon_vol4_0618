@@ -1,5 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
+import Txt from './components/Txt/Txt';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
       <button id="button2">テンプレート2</button>
       <button id="button3">テンプレート3</button>
     </div>
+    <Txt></Txt>
   </div>
   );
 }
