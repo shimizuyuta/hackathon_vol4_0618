@@ -1,4 +1,7 @@
+クローン時
+npm install 
+
 起動時
-npm install build 
+npm run build 
 
 
