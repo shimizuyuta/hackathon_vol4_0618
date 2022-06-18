@@ -1,5 +1,5 @@
 //demo data
-const historyData = {data:['fa','fafa','oyazi','tanaka','hoho']}
+const historyData = {data:['test','test2','oyazi','tanaka','hoho']}
 
 const Txt = () => {
   const handleClick = () =>{
