@@ -4,8 +4,8 @@ const List = (datas) => {
 
   return (
     <div>
-      {datas.map((data) => {
-          <p key={data}>{data}</p>
+      {datas.map((data,index) => {
+        <p key={index}>{data}</p>
       })}
     </div>
   )
