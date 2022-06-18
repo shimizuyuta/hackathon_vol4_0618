@@ -2,10 +2,11 @@ import React from "react";
 import NavBar from "./NavBar";
 import History from "../history/History";
 
-function Top() {
+function Top(props) {
+    console.log(props,'props')
 	return (
 		<div>
-			<NavBar contents={<History />}/>
+			<NavBar contents={<History datas={props.datas}/>}/>
 		</div>
 	);
 };
