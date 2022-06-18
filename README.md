@@ -5,6 +5,8 @@ npm install
 
 ↑ install時にwarnigが出るが特に問題ない。「○○○○　done」的な感じで終わっていたらOK<br/> 問題なくクローン出来たかどうか確かめたいときはnpm run startでlocalhostで立ち上がるかを確認する。　
 
+(追記 by sei) `npm audit fix --force`を実行するように出てきますが､これを実行すると動かなくなることがあるので実行しないほうがいいかもです｡
+
 2.起動時
 npm run build 
 
