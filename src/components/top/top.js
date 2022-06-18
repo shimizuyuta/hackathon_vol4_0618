@@ -1,13 +1,13 @@
-import React from 'react'
+import React from "react";
+import AppBar from "./NavBar";
+import History from "../history/History";
 
-const top = () => {
-  return (
-    <>
-      {/* header */}
+function Top() {
+	return (
+		<div>
+			<AppBar contents={<History />}/>
+		</div>
+	);
+};
 
-      {/* history display */}
-    </>
-  )
-}
-
-export default top
+export default Top;
