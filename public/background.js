@@ -1,7 +1,6 @@
 let selectionText;
-export let history = [];
+let history = [];
 let historyCounter = 0;
-//export history
 
 const user = {
     username: 'demo-user'
@@ -10,6 +9,7 @@ const user = {
 const copyText = (text) => {
     history.push(text);
     console.log("copy: "+text);
+    chrome.storage.local.set({'key': text}, function(){});
 }
 
 const clearList = (text) => {
