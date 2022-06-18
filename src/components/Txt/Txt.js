@@ -18,7 +18,7 @@ const Txt = () => {
 
   return (
     <div>
-      <button onClick={handleClick}>ダウンロード</button>
+      <button onClick={handleClick}>ダウンロード!</button>
     </div>
   )
 }
