@@ -1,5 +1,6 @@
+/*global chrome*/
 let selectionText;
-let history = [];
+export let history = [];
 let historyCounter = 0;
 
 const user = {
@@ -9,12 +10,16 @@ const user = {
 const copyText = (text) => {
     history.push(text);
     console.log("copy: "+text);
-    chrome.storage.local.set({'key': text}, function(){});
+    chrome.storage.local.set({'key': history}, function(){});
 }
 
 const clearList = (text) => {
-    history = [];
-    console.log("clear history!!");
+    chrome.storage.local.get("key", function (rireki) {
+        console.log("testStorage");
+        console.log(rireki.key);
+    });
+    //history = [];
+    //console.log("clear history!!");
 }
 
 const showList = (text) => {
