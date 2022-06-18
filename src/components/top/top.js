@@ -1,13 +1,14 @@
-import React from 'react'
+import React from "react";
+import NavBar from "./NavBar";
+import History from "../history/History";
 
-const top = () => {
-  return (
-    <>
-      {/* header */}
+function Top(props) {
+    console.log(props,'props')
+	return (
+		<div>
+			<NavBar contents={<History datas={props.datas}/>}/>
+		</div>
+	);
+};
 
-      {/* history display */}
-    </>
-  )
-}
-
-export default top
+export default Top;
