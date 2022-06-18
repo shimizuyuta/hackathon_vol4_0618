@@ -1,11 +1,11 @@
 import React from "react";
-import AppBar from "./NavBar";
+import NavBar from "./NavBar";
 import History from "../history/History";
 
 function Top() {
 	return (
 		<div>
-			<AppBar contents={<History />}/>
+			<NavBar contents={<History />}/>
 		</div>
 	);
 };
