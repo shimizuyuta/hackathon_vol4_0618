@@ -1,3 +1,4 @@
+/*global chrome*/
 let selectionText;
 let history = [];
 let historyCounter = 0;

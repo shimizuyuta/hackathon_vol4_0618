@@ -1,3 +1,4 @@
+/*global chrome*/
 document.addEventListener('selectionchange', function (event) {
     let selectionText = window.getSelection().toString();
     console.log(`selection changed:${selectionText}`);
