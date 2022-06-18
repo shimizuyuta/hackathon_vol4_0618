@@ -13,7 +13,7 @@ const copyText = (text) => {
     chrome.storage.local.set({'key': history}, function(){});
 }
 
-const clearList = (text) => {
+const clearList = () => {
     // chrome.storage.local.get("key", function (rireki) {
     //     console.log("testStorage");
     //     console.log(rireki.key);
@@ -36,7 +36,7 @@ chrome.commands.onCommand.addListener((command) => {
             copyText(selectionText);
             break;
         case "clearList":
-            clearList(selectionText);
+            clearList();
             break;
         case "showList":
             showList(selectionText);
@@ -47,18 +47,22 @@ chrome.commands.onCommand.addListener((command) => {
 
 chrome.runtime.onMessage.addListener(
     function onMessageFunc(message, sender, sendResponse) {
+        if(message.message === 'deleteStorage is called!'){
+            console.log("deleteStorage is called!!!!");
+            clearList();
+        }
         if (message === 'get-user-data') {
             sendResponse(user);
         }
         selectionText = message.message;
-        chrome.tabs.query({active: true}).then(tabs => {
-            const tab = tabs[0];
-            //console.log(`selection text[${message.message}] update by sender:${sender.tab.id}, active.tab.id:${tab.id}`);
+        // chrome.tabs.query({active: true}).then(tabs => {
+        //     const tab = tabs[0];
+        //     //console.log(`selection text[${message.message}] update by sender:${sender.tab.id}, active.tab.id:${tab.id}`);
     
-            if (sender.tab.id === tab.id) {
-                selectionText = message.message;
-            }
-        })
+        //     if (sender.tab.id === tab.id) {
+        //         selectionText = message.message;
+        //     }
+        // })
         return true;
     }
 );
