@@ -37,6 +37,8 @@ chrome.commands.onCommand.addListener((command) => {
         case "showList":
             showList(selectionText);
             break;
+        default:
+            break;
     }
 });
 

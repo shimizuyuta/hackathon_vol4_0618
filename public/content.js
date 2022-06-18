@@ -4,10 +4,10 @@ document.addEventListener('selectionchange', function (event) {
     console.log(`selection changed:${selectionText}`);
     if (selectionText.length){
         try{
-            chrome.runtime.sendMessage({
-                message: selectionText
-            });
-        }catch(error){
+            let payload = {message: selectionText };
+            chrome.runtime.sendMessage(payload);
+        }
+        catch(error){
             console.log(error);
         }
     }
