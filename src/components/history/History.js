@@ -8,6 +8,7 @@ import ListItemText from '@mui/material/ListItemText';
 import Checkbox from '@mui/material/Checkbox';
 import IconButton from '@mui/material/IconButton';
 import DeleteIcon from '@mui/icons-material/Delete';
+import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 
 function History() {
 
@@ -28,16 +29,18 @@ function History() {
 
   return (
       <List sx={{ width: '100%', padding: 0, dense: true }}>
-        {[0, 1, 2, 3, 4, 5, 6].map((value) => {
+        {[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, ].map((value) => {
           const labelId = `checkbox-list-label-${value}`;
 
           return (
             <ListItem
               key={value}
               secondaryAction={
+                <>
                 <IconButton >
-                  <DeleteIcon />
+                  <ContentCopyIcon />
                 </IconButton>
+                </>
               }
               disablePadding
             >

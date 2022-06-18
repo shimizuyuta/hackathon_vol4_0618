@@ -9,6 +9,8 @@ import Menu from '@mui/material/Menu';
 import DownloadIcon from '@mui/icons-material/Download';
 import TextSnippetIcon from '@mui/icons-material/TextSnippet';
 import SettingsIcon from '@mui/icons-material/Settings';
+import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
+import FormatColorTextIcon from '@mui/icons-material/FormatColorText';
 
 export default function NavBar(props) {
 
@@ -33,6 +35,16 @@ export default function NavBar(props) {
               aria-haspopup="true"
               color="inherit"
             >
+              <FormatColorTextIcon />
+            </IconButton>
+          </Box>
+          <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
+            <IconButton
+              size="large"
+              aria-label="show more"
+              aria-haspopup="true"
+              color="inherit"
+            >
               <DownloadIcon />
             </IconButton>
           </Box>
@@ -43,7 +55,7 @@ export default function NavBar(props) {
               aria-haspopup="true"
               color="inherit"
             >
-              <TextSnippetIcon />
+              <DeleteOutlineIcon />
             </IconButton>
           </Box>
           <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
@@ -58,7 +70,7 @@ export default function NavBar(props) {
           </Box>
         </Toolbar>
       </AppBar>
-      <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
+      <Box component="main">
         {props.contents}
       </Box>
     </Box>
