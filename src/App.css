@@ -1,8 +1,4 @@
 body {
-	width: 300px;
-  max-height: 300px;
-}
-
-.style {
-  min-height: 100px;
+	min-width: 500px;
+  min-height: 500px;
 }

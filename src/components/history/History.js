@@ -8,6 +8,7 @@ import ListItemText from '@mui/material/ListItemText';
 import Checkbox from '@mui/material/Checkbox';
 import IconButton from '@mui/material/IconButton';
 import DeleteIcon from '@mui/icons-material/Delete';
+import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 
 function History(props) {
   console.log(props);
@@ -35,9 +36,11 @@ function History(props) {
             <ListItem
               key={value}
               secondaryAction={
+                <>
                 <IconButton >
-                  <DeleteIcon />
+                  <ContentCopyIcon />
                 </IconButton>
+                </>
               }
               disablePadding
             >
