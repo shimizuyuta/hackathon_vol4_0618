@@ -43,14 +43,14 @@
       },
       "description": "Run extension."
     },
-    "deletePosts": {
+    "clearList": {
       "suggested_key": {
         "default": "Ctrl+Shift+Y",
         "mac": "MacCtrl+Shift+Y"
       },
       "description": "Clear List."
     },
-    "createPost": {
+    "copyText": {
       "suggested_key": {
         "default": "Ctrl+Shift+S",
         "mac": "MacCtrl+Shift+S"

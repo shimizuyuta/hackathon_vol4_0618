@@ -25,10 +25,10 @@ const showList = (text) => {
 chrome.commands.onCommand.addListener((command) => {
     console.log("-------------------------");
     switch (command) {
-        case "createPost":
+        case "copyText":
             copyText(selectionText);
             break;
-        case "deletePosts":
+        case "clearList":
             clearList(selectionText);
             break;
         case "showList":
