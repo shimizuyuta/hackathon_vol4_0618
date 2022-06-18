@@ -1,5 +1,9 @@
+## 環境構築について
+
 1.クローン時
 npm install 
+
+↑ install時にwarnigが出るが特に問題ない。「○○○○　done」的な感じで終わっていたらOK<br/> 問題なくクローン出来たかどうか確かめたいときはnpm run startでlocalhostで立ち上がるかを確認する。　
 
 2.起動時
 npm run build 
@@ -14,3 +18,13 @@ npm run build
 ４．立ち上げ＆閉じる
 ・Ctrl＋Shift＋H（モーダル立ち上げ）
 ![image](https://user-images.githubusercontent.com/58338829/174348245-3ea71a0a-bed1-43c7-a214-a3c013b74e91.png)
+
+## 開発体制について
+
+1.自分の担当する機能のブランチを確認
+![image](https://user-images.githubusercontent.com/58338829/174416566-86af26d9-1d9d-40d5-b05b-0cad3c8736cb.png)
+
+2.vscodeの左下（現在のブランチのところ）をクリック
+
+3．ブランチの一覧が確認でき、ここから
+![image](https://user-images.githubusercontent.com/58338829/174416739-771772e8-fd27-47af-b90b-214b6dbe2d08.png)
