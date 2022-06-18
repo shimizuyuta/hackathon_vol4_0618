@@ -14,10 +14,6 @@ const copyText = (text) => {
 }
 
 const clearList = () => {
-    // chrome.storage.local.get("key", function (rireki) {
-    //     console.log("testStorage");
-    //     console.log(rireki.key);
-    // });
     chrome.storage.local.clear();
     history = [];
     chrome.storage.local.set({'key': history}, function(){});
@@ -42,7 +38,6 @@ chrome.commands.onCommand.addListener((command) => {
             showList(selectionText);
             break;
     }
-    //console.log(`Command "${command}" called selectionText:${selectionText}`);
 });
 
 chrome.runtime.onMessage.addListener(
@@ -55,14 +50,6 @@ chrome.runtime.onMessage.addListener(
             sendResponse(user);
         }
         selectionText = message.message;
-        // chrome.tabs.query({active: true}).then(tabs => {
-        //     const tab = tabs[0];
-        //     //console.log(`selection text[${message.message}] update by sender:${sender.tab.id}, active.tab.id:${tab.id}`);
-    
-        //     if (sender.tab.id === tab.id) {
-        //         selectionText = message.message;
-        //     }
-        // })
         return true;
     }
 );
