@@ -4,6 +4,8 @@ import './App.css';
 import Txt from './components/Txt/Txt';
 import {useState, useEffect} from 'react';
 import List from './components/List'
+import './App.css';
+import Top from './components/top/Top'
 
 function App() {
 
@@ -33,34 +35,11 @@ function App() {
   });
 
   return (
-  <div class="container" id="main">
-    <div class="content">
-      <ul>
-        {datas.map((post,index) =>
-          <li key={index}>
-            {post}
-          </li>
-        )}
-      </ul>
+
+    <div>
+      <Top />
+
     </div>
-    <textarea name="" 
-      type="text"
-      class="textArea" 
-      id="text"  
-      cols="30" 
-      rows="10" 
-      autofocus 
-      required
-    >
-    </textarea>
-    <button onClick={deleteStorage}>ストレージ消す</button>
-    <div class="buttonArea">
-      <button id="button1">テンプレート1</button>
-      <button id="button2">テンプレート2</button>
-      <button id="button3">テンプレート3</button>
-    </div>
-    <Txt></Txt>
-  </div>
   );
 }
 
