@@ -8,6 +8,7 @@ import List from './components/List'
 function App() {
 
   const [datas, setData] = useState(["aaa"]);
+  const [isClear, setClear] = useState(false);
 
   useEffect(() => {
     chrome.storage.local.get("key", function (value) {
@@ -29,19 +30,20 @@ function App() {
   }
 
   const deleteStorage =() =>{
-    setData([" "]);
+    setClear(true);
     chrome.storage.local.clear();
+    setClear(false);
+    setData([]);
   }
 
   chrome.storage.onChanged.addListener(function(changes, namespace) {
-    if (namespace == "local") {
-      // if (changes.foo) {
-      //   someProcess(changes.foo.newValue);
-      // }
-      chrome.storage.local.get("key", function (value) {
-        console.log(value.key);
-        setData(value.key);
-      });
+    if(!isClear){
+      if (namespace == "local") {
+        chrome.storage.local.get("key", function (value) {
+          console.log(value.key);
+          setData(value.key);
+        });
+      }
     }
   });
 
