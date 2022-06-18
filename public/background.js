@@ -1,6 +1,7 @@
 let selectionText;
-let history = [];
+export let history = [];
 let historyCounter = 0;
+//export history
 
 const user = {
     username: 'demo-user'
