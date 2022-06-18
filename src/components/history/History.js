@@ -9,8 +9,8 @@ import Checkbox from '@mui/material/Checkbox';
 import IconButton from '@mui/material/IconButton';
 import DeleteIcon from '@mui/icons-material/Delete';
 
-function History() {
-
+function History(props) {
+  console.log(props);
   const [checked, setChecked] = React.useState([0]);
 
   const handleToggle = (value) => () => {
@@ -28,7 +28,7 @@ function History() {
 
   return (
       <List sx={{ width: '100%', padding: 0, dense: true }}>
-        {[0, 1, 2, 3, 4, 5, 6].map((value) => {
+        {props.datas.map((value) => {
           const labelId = `checkbox-list-label-${value}`;
 
           return (
@@ -51,7 +51,7 @@ function History() {
                     inputProps={{ 'aria-labelledby': labelId }}
                   />
                 </ListItemIcon>
-                <ListItemText id={labelId} primary={`Line item ${value + 1}`} />
+                <ListItemText id={labelId} primary={value} />
               </ListItemButton>
             </ListItem>
           );

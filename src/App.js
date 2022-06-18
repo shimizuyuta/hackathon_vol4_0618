@@ -37,7 +37,7 @@ function App() {
   return (
 
     <div>
-      <Top />
+      <Top datas={datas}/>
 
     </div>
   );
