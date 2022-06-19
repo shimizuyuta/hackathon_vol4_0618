@@ -10,6 +10,8 @@ import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 import CopyToClickboard from '../Clipboard/Clipboard';
 import DeleteIcon from '@mui/icons-material/Delete';
 import TextField from '@mui/material/TextField';
+import { Box } from '@mui/system';
+import InputAdornment from '@mui/material/InputAdornment';
 
 function History(props) {
   console.log(props);
@@ -30,6 +32,12 @@ function History(props) {
 
   return (
     <>
+    <Box
+      sx={{
+        maxHeight:'60vmx',
+        minHeight:'50vmx'
+      }}
+    >
       {datas.map((value,index) =>(
         <List sx={{padding:"5px",margin:"4px", dense:true, display:"flex", flexDirection:"row"}} >
           <ListItem
@@ -67,13 +75,29 @@ function History(props) {
         </List>
       
       ))}
+    </Box>
+    <Box
+      sx={{
+        minHeight:'30vmx',
+        margin:'1.5rem',
+        width:'100%',
+        padding:'1.5rem',
+      }}
+    >
       <TextField
         id="outlined-textarea"
-        label="test"
         placeholder="testです"
         multiline
         fullWidth
+        rows={3}
+        maxRows={10}
+        InputProps={{
+          endAdornment: <InputAdornment position="end"><IconButton>
+          <ContentCopyIcon />
+        </IconButton></InputAdornment>,
+        }}
       />
+    </Box>
     </>
   );
 };
