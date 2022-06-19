@@ -25,6 +25,13 @@ function App() {
     setData([]);
   }
 
+  const deleteContent =() =>{
+    chrome.runtime.sendMessage({
+      message: "deleteStorage is called!"
+    });
+    setData([]);
+  }
+
   chrome.storage.onChanged.addListener(function(changes, namespace) {
     if (namespace == "local") {
       chrome.storage.local.get("key", function (value) {
@@ -37,7 +44,7 @@ function App() {
   return (
 
     <div>
-      <Top datas={datas}/>
+      <Top datas={datas} deleteStorage={deleteStorage}/>
 
     </div>
   );
