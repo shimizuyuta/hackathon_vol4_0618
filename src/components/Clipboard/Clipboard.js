@@ -1,8 +1,8 @@
 // 渡されたtextをクリップボードにコピーする
-const CopyToClipboard = () => {
-  // console.log('text key +++++',text)
+const CopyToClipboard = (text) => {
+  console.log('text key +++++',text)
   // console.log('text key +++++',text.key)
-  navigator.clipboard.writeText("sss")
+  navigator.clipboard.writeText(text)
 }
 
 // const CopyToClipboard = (text) => {

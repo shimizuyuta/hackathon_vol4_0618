@@ -14,7 +14,7 @@ function App() {
       console.log(value.key);
       setData(value.key);
       console.log(value,'++++++++++')
-      CopyToClipboard();
+      CopyToClipboard("aaaa");
       // CopyToClipboard(value);
     });
   },[]);
