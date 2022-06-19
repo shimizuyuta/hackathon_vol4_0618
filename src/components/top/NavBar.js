@@ -12,6 +12,7 @@ import SettingsIcon from '@mui/icons-material/Settings';
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import FormatColorTextIcon from '@mui/icons-material/FormatColorText';
 import Button from '@mui/material/Button';
+import UploadIcon from '@mui/icons-material/Upload';
 
 export default function NavBar(props) {
 
@@ -46,12 +47,12 @@ export default function NavBar(props) {
             {/* 右の点マークの中で縦並びにしたいものを記述 */}
           </Box>
           <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
-            <IconButton
+            <IconButton onClick = {() => props.output(props.datas)}
               aria-label="download"
               aria-haspopup="true"
               color="inherit"
             >
-              <FormatColorTextIcon />
+              <UploadIcon />
             </IconButton>
           </Box>
           <Box sx={{ display: { xs: 'flex', md: 'none' } }}>

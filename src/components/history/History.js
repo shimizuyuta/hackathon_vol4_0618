@@ -12,10 +12,12 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import TextField from '@mui/material/TextField';
 import { Box } from '@mui/system';
 import InputAdornment from '@mui/material/InputAdornment';
+import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 
 function History(props) {
   console.log(props);
   const [checked, setChecked] = React.useState([0]);
+
   const datas = props.datas
   const handleToggle = (value) => () => {
     const currentIndex = checked.indexOf(value);
@@ -30,12 +32,14 @@ function History(props) {
     setChecked(newChecked);
   };
 
+
   return (
     <>
     <Box
       sx={{
         maxHeight:'60vmx',
-        minHeight:'50vmx'
+        minHeight:'50vmx',
+        margin:'.6rem'
       }}
     >
       {datas.map((value,index) =>(
@@ -57,13 +61,9 @@ function History(props) {
                   </ListItemIcon>
                   <ListItemText id={index} primary={value} sx={{}}/>
               </ListItemButton> */}
-                <Checkbox
-                  edge="start"
-                  // checked={checked.indexOf(value) !== -1}
-                  // tabIndex={-1}
-                  // disableRipple
-                  // inputProps={{ 'aria-labelledby': index }}
-                />
+                <ListItemIcon >
+                  <KeyboardArrowRightIcon />
+                </ListItemIcon>
                 <ListItemText id={index} primary={value}/>
                 <IconButton onClick={() => CopyToClickboard(value)}>
                     <ContentCopyIcon />
@@ -79,23 +79,24 @@ function History(props) {
     <Box
       sx={{
         minHeight:'30vmx',
-        margin:'1.5rem',
+        margin:'1rem',
         width:'100%',
-        padding:'1.5rem',
+        
       }}
     >
       <TextField
         id="outlined-textarea"
-        placeholder="testです"
+        value={props.textData}
         multiline
         fullWidth
         rows={3}
         maxRows={10}
         InputProps={{
-          endAdornment: <InputAdornment position="end"><IconButton>
+          endAdornment: <InputAdornment position="end"><IconButton onClick={() => CopyToClickboard(props.textData)}>
           <ContentCopyIcon />
-        </IconButton></InputAdornment>,
+        </IconButton ></InputAdornment>,
         }}
+        sx={{width:'470px'}}
       />
     </Box>
     </>
