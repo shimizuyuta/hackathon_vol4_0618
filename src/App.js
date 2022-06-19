@@ -3,6 +3,7 @@ import './App.css';
 import {useState, useEffect} from 'react';
 import './App.css';
 import Top from './components/top/Top'
+import CopyToClipboard from './components/Clipboard/Clipboard';
 
 function App() {
 
@@ -12,6 +13,9 @@ function App() {
     chrome.storage.local.get("key", function (value) {
       console.log(value.key);
       setData(value.key);
+      console.log(value,'++++++++++')
+      CopyToClipboard();
+      // CopyToClipboard(value);
     });
   },[]);
 

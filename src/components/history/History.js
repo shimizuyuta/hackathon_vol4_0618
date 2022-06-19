@@ -7,6 +7,7 @@ import ListItemText from '@mui/material/ListItemText';
 import Checkbox from '@mui/material/Checkbox';
 import IconButton from '@mui/material/IconButton';
 import ContentCopyIcon from '@mui/icons-material/ContentCopy';
+import CopyToClickboard from '../Clipboard/Clipboard'
 
 function History(props) {
   console.log(props);
@@ -35,7 +36,8 @@ function History(props) {
               key={value}
               secondaryAction={
                 <>
-                <IconButton >
+                {/* <IconButton> */}
+                <IconButton onClick={() => CopyToClickboard(value)}>
                   <ContentCopyIcon />
                 </IconButton>
                 </>
