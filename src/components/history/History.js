@@ -7,7 +7,8 @@ import ListItemText from '@mui/material/ListItemText';
 import Checkbox from '@mui/material/Checkbox';
 import IconButton from '@mui/material/IconButton';
 import ContentCopyIcon from '@mui/icons-material/ContentCopy';
-import CopyToClickboard from '../Clipboard/Clipboard'
+import CopyToClickboard from '../Clipboard/Clipboard';
+import DeleteIcon from '@mui/icons-material/Delete';
 
 function History(props) {
   console.log(props);
