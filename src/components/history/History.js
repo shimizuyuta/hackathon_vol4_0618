@@ -13,7 +13,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 function History(props) {
   console.log(props);
   const [checked, setChecked] = React.useState([0]);
-
+  const datas = props.datas
   const handleToggle = (value) => () => {
     const currentIndex = checked.indexOf(value);
     const newChecked = [...checked];
@@ -28,42 +28,45 @@ function History(props) {
   };
 
   return (
-      <List sx={{ width: '100%', padding: 0, dense: true }}>
-        {props.datas.map((value,index) => {
-          const labelId = `checkbox-list-label-${value}`;
-
-          return (
-            <ListItem
-              key={index}
-              secondaryAction={
-                <>
-                {/* <IconButton> */}
+    <>
+      {datas.map((value,index) =>(
+        <List sx={{padding:"5px",margin:"4px", dense:true, display:"flex", flexDirection:"row"}} >
+          <ListItem
+            key={index}
+            disablePadding
+            sx={{paddingTop:'5px'}}
+          >
+            {/* <ListItemButton role={undefined} onClick={handleToggle(value)} dense>
+              <ListItemIcon>
+                <Checkbox
+                  edge="start"
+                  checked={checked.indexOf(value) !== -1}
+                  tabIndex={-1}
+                  disableRipple
+                  inputProps={{ 'aria-labelledby': index }}
+                />
+                  </ListItemIcon>
+                  <ListItemText id={index} primary={value} sx={{}}/>
+              </ListItemButton> */}
+                <Checkbox
+                  edge="start"
+                  // checked={checked.indexOf(value) !== -1}
+                  // tabIndex={-1}
+                  // disableRipple
+                  // inputProps={{ 'aria-labelledby': index }}
+                />
+                <ListItemText id={index} primary={value}/>
                 <IconButton onClick={() => CopyToClickboard(value)}>
-                  <ContentCopyIcon />
-                </IconButton>
-                <IconButton onClick={() => {props.deleteContent(index)}}>
-                  <DeleteIcon />
-                </IconButton>
-                </>
-              }
-              disablePadding
-            >
-              <ListItemButton role={undefined} onClick={handleToggle(value)} dense>
-                <ListItemIcon>
-                  <Checkbox
-                    edge="start"
-                    checked={checked.indexOf(value) !== -1}
-                    tabIndex={-1}
-                    disableRipple
-                    inputProps={{ 'aria-labelledby': index }}
-                  />
-                </ListItemIcon>
-                <ListItemText id={index} primary={value} sx={{}}/>
-              </ListItemButton>
-            </ListItem>
-          );
-        })}
-      </List>
+                    <ContentCopyIcon />
+                  </IconButton>
+                  <IconButton onClick={() => {props.deleteContent(index)}}>
+                    <DeleteIcon />
+                  </IconButton>
+                </ListItem>
+        </List>
+      
+      ))}
+    </>
   );
 };
 
