@@ -11,8 +11,24 @@ import TextSnippetIcon from '@mui/icons-material/TextSnippet';
 import SettingsIcon from '@mui/icons-material/Settings';
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import FormatColorTextIcon from '@mui/icons-material/FormatColorText';
+import Button from '@mui/material/Button';
 
 export default function NavBar(props) {
+
+  const download = (data, title="clip-roach.txt") => {
+    for(var i=0;i<data.length;i++){
+      data[i] = data[i] + "\n\n";
+    }
+    const newBlob = new Blob(data);
+    const objUrl = window.URL.createObjectURL(newBlob);
+    const link = document.createElement("a");
+    link.href = objUrl;
+    link.download = "clip-roach.txt";
+    link.click();
+    setTimeout(() => {
+      window.URL.revokeObjectURL(objUrl);
+    }, 250);
+  }
 
   return (
     <Box sx={{ flexGrow: 1, padding: 0 }}>
@@ -39,7 +55,7 @@ export default function NavBar(props) {
             </IconButton>
           </Box>
           <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
-            <IconButton
+            <IconButton onClick = {() => download(props.datas)}
               size="large"
               aria-label="show more"
               aria-haspopup="true"
@@ -49,7 +65,7 @@ export default function NavBar(props) {
             </IconButton>
           </Box>
           <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
-            <IconButton
+            <IconButton onClick = {() => props.deleteStorage()}
               size="large"
               aria-label="show more"
               aria-haspopup="true"
