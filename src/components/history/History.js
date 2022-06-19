@@ -34,7 +34,7 @@ function History(props) {
 
           return (
             <ListItem
-              key={value}
+              key={index}
               secondaryAction={
                 <>
                 <IconButton >
@@ -54,10 +54,10 @@ function History(props) {
                     checked={checked.indexOf(value) !== -1}
                     tabIndex={-1}
                     disableRipple
-                    inputProps={{ 'aria-labelledby': labelId }}
+                    inputProps={{ 'aria-labelledby': index }}
                   />
                 </ListItemIcon>
-                <ListItemText id={labelId} primary={value} />
+                <ListItemText id={index} primary={value} sx={{}}/>
               </ListItemButton>
             </ListItem>
           );

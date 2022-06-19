@@ -26,9 +26,11 @@ const showList = (text) => {
 }
 
 const deleteContent = (index) => {
-    console.log(index, "deleteContent");
+    //console.log(index, "deleteContent");
+    //console.log(history);
     //if(history.length > index){
         history.splice(index,1);
+        //console.log(history);
         chrome.storage.local.set({'key': history}, function(){});
     //}
 }

@@ -35,7 +35,7 @@ function App() {
   chrome.storage.onChanged.addListener(function(changes, namespace) {
     if (namespace == "local") {
       chrome.storage.local.get("key", function (value) {
-        //console.log(value.key);
+        console.log(value.key);
         setData(value.key);
       });
     }
@@ -49,7 +49,6 @@ function App() {
         deleteStorage={deleteStorage}
         deleteContent={deleteContent}
       />
-      <button onClick={() => deleteContent(2)}>デリーとテスト</button>
     </div>
   );
 }
