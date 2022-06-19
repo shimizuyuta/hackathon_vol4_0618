@@ -1,5 +1,4 @@
 import * as React from 'react';
-import Box from '@mui/material/Box';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
@@ -7,8 +6,8 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import Checkbox from '@mui/material/Checkbox';
 import IconButton from '@mui/material/IconButton';
-import DeleteIcon from '@mui/icons-material/Delete';
 import ContentCopyIcon from '@mui/icons-material/ContentCopy';
+import CopyToClickboard from '../Clipboard/Clipboard'
 
 function History(props) {
   console.log(props);
@@ -37,7 +36,8 @@ function History(props) {
               key={index}
               secondaryAction={
                 <>
-                <IconButton >
+                {/* <IconButton> */}
+                <IconButton onClick={() => CopyToClickboard(value)}>
                   <ContentCopyIcon />
                 </IconButton>
                 <IconButton onClick={() => {props.deleteContent(index)}}>
