@@ -6,7 +6,16 @@ function Top(props) {
     console.log(props,'props')
 	return (
 		<div>
-			<NavBar deleteStorage={props.deleteStorage} datas={props.datas} contents={<History datas={props.datas}/>}/>
+			<NavBar
+				deleteStorage={props.deleteStorage}
+				datas={props.datas}
+				contents={
+					<History
+						datas={props.datas}
+						deleteContent={props.deleteContent}
+					/>
+				}
+			/>
 		</div>
 	);
 };

@@ -25,17 +25,17 @@ function App() {
     setData([]);
   }
 
-  const deleteContent =() =>{
+  const deleteContent =(index) =>{
+    let deleteMessage = index + "deletedeletedelete";
     chrome.runtime.sendMessage({
-      message: "deleteStorage is called!"
+      message: deleteMessage
     });
-    setData([]);
   }
 
   chrome.storage.onChanged.addListener(function(changes, namespace) {
     if (namespace == "local") {
       chrome.storage.local.get("key", function (value) {
-        console.log(value.key);
+        //console.log(value.key);
         setData(value.key);
       });
     }
@@ -44,8 +44,12 @@ function App() {
   return (
 
     <div>
-      <Top datas={datas} deleteStorage={deleteStorage}/>
-
+      <Top 
+        datas={datas}
+        deleteStorage={deleteStorage}
+        deleteContent={deleteContent}
+      />
+      <button onClick={() => deleteContent(2)}>デリーとテスト</button>
     </div>
   );
 }

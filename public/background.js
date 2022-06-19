@@ -25,6 +25,14 @@ const showList = (text) => {
     history.forEach(element => console.log(element));
 }
 
+const deleteContent = (index) => {
+    console.log(index, "deleteContent");
+    //if(history.length > index){
+        history.splice(index,1);
+        chrome.storage.local.set({'key': history}, function(){});
+    //}
+}
+
 chrome.commands.onCommand.addListener((command) => {
     console.log("-------------------------");
     switch (command) {
@@ -44,6 +52,12 @@ chrome.commands.onCommand.addListener((command) => {
 
 chrome.runtime.onMessage.addListener(
     function onMessageFunc(message, sender, sendResponse) {
+        if(message.message.indexOf("deletedeletedelete")!=-1){
+            console.log("deletedeletedelete");
+            let deleteIndex = Number(message.message.slice(0,1));
+            console.log(deleteIndex);
+            deleteContent(deleteIndex);
+        }
         if(message.message === 'deleteStorage is called!'){
             console.log("deleteStorage is called!!!!");
             clearList();

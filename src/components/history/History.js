@@ -29,7 +29,7 @@ function History(props) {
 
   return (
       <List sx={{ width: '100%', padding: 0, dense: true }}>
-        {props.datas.map((value) => {
+        {props.datas.map((value,index) => {
           const labelId = `checkbox-list-label-${value}`;
 
           return (
@@ -39,6 +39,9 @@ function History(props) {
                 <>
                 <IconButton >
                   <ContentCopyIcon />
+                </IconButton>
+                <IconButton onClick={() => {props.deleteContent(index)}}>
+                  <DeleteIcon />
                 </IconButton>
                 </>
               }
