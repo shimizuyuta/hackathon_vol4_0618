@@ -9,6 +9,7 @@ import IconButton from '@mui/material/IconButton';
 import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 import CopyToClickboard from '../Clipboard/Clipboard';
 import DeleteIcon from '@mui/icons-material/Delete';
+import TextField from '@mui/material/TextField';
 
 function History(props) {
   console.log(props);
@@ -66,6 +67,13 @@ function History(props) {
         </List>
       
       ))}
+      <TextField
+        id="outlined-textarea"
+        label="test"
+        placeholder="testです"
+        multiline
+        fullWidth
+      />
     </>
   );
 };
