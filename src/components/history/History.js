@@ -61,9 +61,11 @@ function History(props) {
                   </ListItemIcon>
                   <ListItemText id={index} primary={value} sx={{}}/>
               </ListItemButton> */}
+                <Box sx={{ width:'30px'}}>
                 <ListItemIcon >
                   <KeyboardArrowRightIcon />
                 </ListItemIcon>
+                </Box>
                 <ListItemText id={index} primary={value}/>
                 <IconButton onClick={() => CopyToClickboard(value)}>
                     <ContentCopyIcon />
