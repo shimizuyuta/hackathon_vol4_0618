@@ -1,8 +1,8 @@
 ## サービス名
 <h4>Cilp-Roach from GBS</h4>
      
-## 目的 
-コードや文章などをコピペ作業を効率化する。
+## 概要
+コードや文章などをコピペ作業を効率化するChrome拡張
 
 ## 機能一覧
 
@@ -30,10 +30,23 @@
 ## おわりに
 チームゴキブリバスターズは即席チームではありましたが、メンバーそれぞれが自分の持ち味を発揮してハッカソンに取り組むことができました。
 
+## メンバー
 
-![image](https://user-images.githubusercontent.com/58338829/174626543-71b56378-9145-4ca1-b812-04194150ce88.png)
+(アルファベット順)
 
+- [i-nakamura823](https://github.com/i-nakamura823)
+- [JinA293](https://github.com/JinA293)
+- [masachika-kamada](https://github.com/masachika-kamada)
+- [seitamuro](https://github.com/seitamuro)
+- [shimizuyuta](https://github.com/shimizuyuta)
 
+## 受賞
+
+第4回技育 CAMP ハッカソン　(2022-06-19)
+
+<img src="https://user-images.githubusercontent.com/63488322/178513316-4b102572-44c0-4cf8-aeb2-9c149769227b.jpg" width="500px">
+
+---
 
 ## チーム向け
 
