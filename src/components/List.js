@@ -1,11 +1,9 @@
-import React from 'react'
 
 const List = (datas) => {
-
   return (
     <div>
-      {datas.map((data,index) => {
-        <p key={index}>{data}</p>
+      {datas.map((data, index) => {
+        return <p key={index}>{data}</p>
       })}
     </div>
   )
