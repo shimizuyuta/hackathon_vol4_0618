@@ -2,7 +2,7 @@
 import './App.css';
 import {useState, useEffect} from 'react';
 import './App.css';
-import Top from './components/top/Top'
+import Top from './components/top/top'
 import CopyToClipboard from './components/Clipboard/Clipboard';
 
 function App() {
