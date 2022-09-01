@@ -1,26 +1,26 @@
-//demo data
-const historyData = {data:['test','test2','oyazi','tanaka','hoho']}
+import React from "react"
 
-const Txt = () => {
-  const handleClick = () =>{
-    const data = historyData.data
-    //ToDo 改行のためにdataに正規表現を使って整える必要あり
-    const newBlob = new Blob(data)
-    const objUrl = window.URL.createObjectURL(newBlob);
-    const link = document.createElement("a");
-    link.href = objUrl;
-    link.download = 'test';
-    link.click();
-    setTimeout(() => {
-      window.URL.revokeObjectURL(objUrl);
-    }, 250);
-  }
+const download = (data, title="clip-roach.txt") => {
+  const newBlob = new Blob(data);
+  const objUrl = window.URL.createObjectURL(newBlob);
+  const link = document.createElement("a");
+  link.href = objUrl;
+  link.download = "clip-roach.txt";
+  link.click();
+  setTimeout(() => {
+    window.URL.revokeObjectURL(objUrl);
+  }, 250);
+}
 
+const Txt = (props) => {
   return (
-    <div>
-      <button onClick={handleClick}>ダウンロード!</button>
-    </div>
+
+    <button onClick={() => download(props.data)}>
+      Txtでエクスポート
+    </button>
+
   )
 }
 
+//export {Txt, ExportTextCollector, ExportButton, isSelected}
 export default Txt

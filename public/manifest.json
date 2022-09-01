@@ -26,6 +26,15 @@
       "128": "/images/128.jpg"
     }
   },
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+"content_scripts": [{
+    "matches": ["http://*/*","https://*/*"],
+    "js": ["content.js"]
+  }],
+
   "commands": {
     "_execute_action": {
       "suggested_key": {
@@ -34,19 +43,26 @@
       },
       "description": "Run extension."
     },
-    "deletePosts": {
+    "clearList": {
       "suggested_key": {
         "default": "Ctrl+Shift+Y",
         "mac": "MacCtrl+Shift+Y"
       },
-      "description": "Run extension."
+      "description": "Clear List."
     },
-    "createPost": {
+    "copyText": {
       "suggested_key": {
         "default": "Ctrl+Shift+S",
         "mac": "MacCtrl+Shift+S"
       },
-      "description": "Run extension."
+      "description": "Copy: Add List."
+    },
+    "showList": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+L",
+        "mac": "MacCtrl+Shift+L"
+      },
+      "description": "Show List."
     }
   },
 
