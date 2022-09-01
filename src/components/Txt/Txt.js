@@ -14,9 +14,11 @@ const download = (data, title="clip-roach.txt") => {
 
 const Txt = (props) => {
   return (
+
     <button onClick={() => download(props.data)}>
       Txtでエクスポート
     </button>
+
   )
 }
 
