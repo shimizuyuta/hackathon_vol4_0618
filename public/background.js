@@ -1,4 +1,9 @@
 /*global chrome*/
+// リスナ登録で特定イベントやJavascriptからの呼び出しで発火する機能を作成、登録するイメージ
+// chrome.runtime.sendMessageを通じてcontent_scriptsとデータ連携することが可能
+
+
+
 let selectionText
 export let history = []
 let historyCounter = 0
@@ -52,7 +57,11 @@ chrome.commands.onCommand.addListener((command) => {
   }
 })
 
-chrome.runtime.onMessage.addListener(function onMessageFunc(message, sender, sendResponse) {
+chrome.runtime.onMessage.addListener(function onMessageFunc(
+  message,
+  sender,
+  sendResponse
+) {
   if (message.message.indexOf('deletedeletedelete') != -1) {
     console.log('deletedeletedelete')
     let deleteIndex = Number(message.message.slice(0, 1))
