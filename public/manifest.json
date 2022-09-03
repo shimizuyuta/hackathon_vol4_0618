@@ -26,12 +26,12 @@
   "content_scripts": [
     {
       "matches": [
-        "http://*/*",
-        "https://*/*"
+        "<all_urls>"
       ],
       "js": [
         "content.js"
-      ]
+      ],
+      "run_at":"document_end"
     }
   ],
   "commands": {
