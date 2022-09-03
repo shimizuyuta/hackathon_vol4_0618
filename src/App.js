@@ -10,7 +10,7 @@ function App() {
 
   useEffect(() => {
     chrome.storage.local.get('key', function (value) {
-      console.log(value.key)
+      console.log(value.key,'fafa')
       setData(value.key)
       console.log(value, '++++++++++')
       CopyToClipboard('aaaa')
@@ -26,6 +26,7 @@ function App() {
   }
 
   const deleteContent = (index) => {
+    console.log('deletecontents',deleteContent)
     let deleteMessage = index + 'deletedeletedelete'
     chrome.runtime.sendMessage({
       message: deleteMessage,
@@ -34,6 +35,8 @@ function App() {
 
   chrome.storage.onChanged.addListener(function (changes, namespace) {
     if (namespace == 'local') {
+      console.log('whats chnages',changes)
+      console.log('whats chnages')
       chrome.storage.local.get('key', function (value) {
         console.log(value.key)
         setData(value.key)

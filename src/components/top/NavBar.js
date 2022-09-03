@@ -9,7 +9,7 @@ import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline'
 import UploadIcon from '@mui/icons-material/Upload'
 
 export default function NavBar(props) {
-  const download = (data, title = 'clip-roach.txt') => {
+  const download = (data) => {
     for (var i = 0; i < data.length; i++) {
       data[i] = data[i] + '\n\n'
     }

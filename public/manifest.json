@@ -3,19 +3,12 @@
   "name": "popupscreenshot",
   "description": "コピーしたものを基にテンプレートを使用して簡単に備忘録を作成してくれます",
   "version": "3.0.1",
-
-
-
   "permissions": [
     "activeTab",
-    "contextMenus",
     "clipboardWrite",
-    "scripting",
     "tabs",
     "storage"
   ],
-
-  
   "action": {
     "default_popup": "index.html",
     "default_icon": {
@@ -30,11 +23,17 @@
     "service_worker": "background.js",
     "type": "module"
   },
-"content_scripts": [{
-    "matches": ["http://*/*","https://*/*"],
-    "js": ["content.js"]
-  }],
-
+  "content_scripts": [
+    {
+      "matches": [
+        "http://*/*",
+        "https://*/*"
+      ],
+      "js": [
+        "content.js"
+      ]
+    }
+  ],
   "commands": {
     "_execute_action": {
       "suggested_key": {
@@ -65,7 +64,6 @@
       "description": "Show List."
     }
   },
-
   "icons": {
     "16": "/images/16.png",
     "32": "/images/32.png",
