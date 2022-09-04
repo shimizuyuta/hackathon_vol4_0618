@@ -3,7 +3,7 @@ import './App.css'
 import { useState, useEffect } from 'react'
 import './App.css'
 import Top from './components/top/top'
-import CopyToClipboard from './components/Clipboard/Clipboard'
+// import CopyToClipboard from './components/Clipboard/Clipboard'
 
 function App() {
   const [datas, setData] = useState([''])
@@ -13,7 +13,7 @@ function App() {
       console.log(value.key,'fafa')
       setData(value.key)
       console.log(value, '++++++++++')
-      CopyToClipboard('aaaa')
+      // CopyToClipboard('aaaa')
       // CopyToClipboard(value);
     })
   }, [])

@@ -3,8 +3,8 @@ import ListItem from '@mui/material/ListItem'
 import ListItemIcon from '@mui/material/ListItemIcon'
 import ListItemText from '@mui/material/ListItemText'
 import IconButton from '@mui/material/IconButton'
-import ContentCopyIcon from '@mui/icons-material/ContentCopy'
-import CopyToClickboard from '../Clipboard/Clipboard'
+// import ContentCopyIcon from '@mui/icons-material/ContentCopy'
+// import CopyToClickboard from '../Clipboard/Clipboard'
 import DeleteIcon from '@mui/icons-material/Delete'
 import TextField from '@mui/material/TextField'
 import { Box } from '@mui/system'
@@ -68,9 +68,9 @@ function History(props) {
                 </ListItemIcon>
               </Box>
               <ListItemText id={index} primary={value} />
-              <IconButton onClick={() => CopyToClickboard(value)}>
+              {/* <IconButton onClick={() => CopyToClickboard(value)}>
                 <ContentCopyIcon />
-              </IconButton>
+              </IconButton> */}
               <IconButton
                 onClick={() => {
                   props.deleteContent(index)
@@ -99,9 +99,9 @@ function History(props) {
           InputProps={{
             endAdornment: (
               <InputAdornment position='end'>
-                <IconButton onClick={() => CopyToClickboard(props.textData)}>
+                {/* <IconButton onClick={() => CopyToClickboard(props.textData)}>
                   <ContentCopyIcon />
-                </IconButton>
+                </IconButton> */}
               </InputAdornment>
             ),
           }}
