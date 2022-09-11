@@ -1,8 +1,5 @@
 /*global chrome*/
-// リスナ登録で特定イベントやJavascriptからの呼び出しで発火する機能を作成、登録するイメージ
-// chrome.runtime.sendMessageを通じてcontent_scriptsとデータ連携することが可能
-
-//import copyToClipboard from '../src/components/Clipboard/Clipboard'
+// import copyToClipboard from '../src/components/Clipboard/Clipboard'
 
 let selectionText
 export let history = []

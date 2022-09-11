@@ -14,5 +14,4 @@ const Txt = (props) => {
   return <button onClick={() => download(props.data)}>Txtでエクスポート</button>
 }
 
-//export {Txt, ExportTextCollector, ExportButton, isSelected}
 export default Txt
