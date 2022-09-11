@@ -2,7 +2,7 @@
 // リスナ登録で特定イベントやJavascriptからの呼び出しで発火する機能を作成、登録するイメージ
 // chrome.runtime.sendMessageを通じてcontent_scriptsとデータ連携することが可能
 
-
+//import copyToClipboard from '../src/components/Clipboard/Clipboard'
 
 let selectionText
 export let history = []
@@ -40,10 +40,18 @@ const deleteContent = (index) => {
   //}
 }
 
+const getURL = () => {
+  chrome.tabs.query({'active': true, 'lastFocusedWindow': true}, function (tabs) {
+    var url = tabs[0].url;
+    console.log("getURL: "+url);
+  });
+}
+
 chrome.commands.onCommand.addListener((command) => {
   console.log('-------------------------')
   switch (command) {
     case 'copyText':
+      getURL();
       copyText(selectionText)
       break
     case 'clearList':
