@@ -1,4 +1,3 @@
-
 const List = (datas) => {
   return (
     <div>

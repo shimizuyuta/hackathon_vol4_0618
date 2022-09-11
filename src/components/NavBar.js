@@ -28,7 +28,7 @@ export default function NavBar(props) {
     <Box sx={{ flexGrow: 1, padding: 0 }}>
       <AppBar position='static'>
         <Toolbar>
-          <Typography variant="h6" noWrap component='div'>
+          <Typography variant='h6' noWrap component='div'>
             Clip-Roach
           </Typography>
           <Box sx={{ flexGrow: 1 }} />

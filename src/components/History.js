@@ -12,7 +12,6 @@ import InputAdornment from '@mui/material/InputAdornment'
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight'
 
 function History(props) {
-  
   const datas = props.datas
   return (
     <>
