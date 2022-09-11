@@ -11,7 +11,6 @@ const user = {
 
 const copyText = (text) => {
   if(text === oldText) {
-    console.log("おんなじやないかい")
     return
   }
   history.push(text)
@@ -62,7 +61,6 @@ chrome.runtime.onMessage.addListener(function onMessageFunc(
     clearList()
   }else{
     sendResponse(user);
-    console.log("確認 : get-user-data")
     selectionText = message.message;
   }
 
