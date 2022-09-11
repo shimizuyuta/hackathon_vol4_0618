@@ -2,7 +2,7 @@
 import './App.css'
 import { useState, useEffect } from 'react'
 import './App.css'
-import Top from './components/top/top'
+import Top from './components/top'
 
 function App() {
   const [datas, setData] = useState([''])
@@ -27,12 +27,10 @@ function App() {
     })
   }
 
-  chrome.storage.onChanged.addListener(function (changes, namespace) {
-    if (namespace == 'local') {
-      chrome.storage.local.get('key', function (value) {
-        setData(value.key)
-      })
-    }
+  chrome.storage.onChanged.addListener(function () {
+    chrome.storage.local.get('key', function (value) {
+      setData(value.key)
+    })
   })
 
   return (

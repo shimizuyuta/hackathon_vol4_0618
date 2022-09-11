@@ -46,7 +46,6 @@ chrome.commands.onCommand.addListener((command) => {
 
 chrome.runtime.onMessage.addListener(function onMessageFunc(
   message,
-  sender,
   sendResponse
 ) {
   if (message.message.indexOf('deleteMessage') != -1) {

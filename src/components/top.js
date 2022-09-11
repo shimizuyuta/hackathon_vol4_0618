@@ -1,6 +1,6 @@
 import React from 'react'
 import NavBar from './NavBar'
-import History from '../history/History'
+import History from './History'
 
 function Top(props) {
   const [textData, setTextData] = React.useState('')
