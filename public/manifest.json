@@ -4,9 +4,6 @@
   "description": "コピーしたものを基にテンプレートを使用して簡単に備忘録を作成してくれます",
   "version": "3.0.1",
   "permissions": [
-    "activeTab",
-    "clipboardWrite",
-    "tabs",
     "storage"
   ],
   "action": {
