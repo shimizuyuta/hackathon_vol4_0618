@@ -6,18 +6,14 @@
 // 外部のWebページにDOM書き換え、データ取得などの干渉できる
 
 document.addEventListener('selectionchange', function (event) {
-    console.log('sssss')
     let selectionText = window.getSelection().toString();
-    console.log(`selection changed:${selectionText}`);
     if (selectionText.length){
         try{
             let payload = {message: selectionText }
-            chrome.runtime.sendMessage(payload,(data)=>{
-                console.log(data)
-            })
+            chrome.runtime.sendMessage(payload)
         }
         catch(error){
-            console.log(error);
+            console.log(error,'エラー発生');
         }
     }
 })

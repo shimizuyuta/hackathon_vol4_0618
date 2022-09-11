@@ -12,23 +12,8 @@ import InputAdornment from '@mui/material/InputAdornment'
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight'
 
 function History(props) {
-  console.log(props)
-  // const [checked, setChecked] = React.useState([0])
-
+  
   const datas = props.datas
-  // const handleToggle = (value) => () => {
-  //   const currentIndex = checked.indexOf(value)
-  //   const newChecked = [...checked]
-
-  //   if (currentIndex === -1) {
-  //     newChecked.push(value)
-  //   } else {
-  //     newChecked.splice(currentIndex, 1)
-  //   }
-
-  //   setChecked(newChecked)
-  // }
-
   return (
     <>
       <Box
@@ -50,18 +35,6 @@ function History(props) {
             key={index}
           >
             <ListItem key={index} disablePadding sx={{ paddingTop: '5px' }}>
-              {/* <ListItemButton role={undefined} onClick={handleToggle(value)} dense>
-              <ListItemIcon>
-                <Checkbox
-                  edge="start"
-                  checked={checked.indexOf(value) !== -1}
-                  tabIndex={-1}
-                  disableRipple
-                  inputProps={{ 'aria-labelledby': index }}
-                />
-                  </ListItemIcon>
-                  <ListItemText id={index} primary={value} sx={{}}/>
-              </ListItemButton> */}
               <Box sx={{ width: '30px' }}>
                 <ListItemIcon>
                   <KeyboardArrowRightIcon />

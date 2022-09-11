@@ -10,11 +10,9 @@ function Top(props) {
     for (var i = 0; i < data.length; i++) {
       out += data[i] + '\n\n'
     }
-    console.log(out)
     setTextData(out)
   }
 
-  console.log(props, 'props')
   return (
     <div>
       <NavBar

@@ -6,7 +6,6 @@
 
 let selectionText
 export let history = []
-let historyCounter = 0
 
 const user = {
   username: 'demo-user',
@@ -14,41 +13,27 @@ const user = {
 
 const copyText = (text) => {
   history.push(text)
-  console.log('copy: ' + text)
-  chrome.storage.local.set({ key: history }, function () {})
+  chrome.storage.local.set({ key: history })
 }
 
 const clearList = () => {
   chrome.storage.local.clear()
   history = []
-  chrome.storage.local.set({ key: history }, function () {})
-  console.log('clear history!!')
-}
-
-const showList = (text) => {
-  console.log('<コピー履歴>')
-  history.forEach((element) => console.log(element))
+  chrome.storage.local.set({ key: history })
 }
 
 const deleteContent = (index) => {
-  //console.log(index, "deleteContent");
-  //console.log(history);
-  //if(history.length > index){
   history.splice(index, 1)
-  //console.log(history);
-  chrome.storage.local.set({ key: history }, function () {})
-  //}
+  chrome.storage.local.set({ key: history })
 }
 
 const getURL = () => {
   chrome.tabs.query({'active': true, 'lastFocusedWindow': true}, function (tabs) {
     var url = tabs[0].url;
-    console.log("getURL: "+url);
   });
 }
 
 chrome.commands.onCommand.addListener((command) => {
-  console.log('-------------------------')
   switch (command) {
     case 'copyText':
       getURL();
@@ -56,9 +41,6 @@ chrome.commands.onCommand.addListener((command) => {
       break
     case 'clearList':
       clearList()
-      break
-    case 'showList':
-      showList(selectionText)
       break
     default:
       break
@@ -70,14 +52,11 @@ chrome.runtime.onMessage.addListener(function onMessageFunc(
   sender,
   sendResponse
 ) {
-  if (message.message.indexOf('deletedeletedelete') != -1) {
-    console.log('deletedeletedelete')
+  if (message.message.indexOf('deleteMessage') != -1) {
     let deleteIndex = Number(message.message.slice(0, 1))
-    console.log(deleteIndex)
     deleteContent(deleteIndex)
   }
   if (message.message === 'deleteStorage is called!') {
-    console.log('deleteStorage is called!!!!')
     clearList()
   }
   if (message === 'get-user-data') {
