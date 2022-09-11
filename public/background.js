@@ -3,14 +3,20 @@
 
 let selectionText
 export let history = []
+let oldText = ""
 
 const user = {
   username: 'demo-user',
 }
 
 const copyText = (text) => {
+  if(text === oldText) {
+    console.log("おんなじやないかい")
+    return
+  }
   history.push(text)
-  chrome.storage.local.set({ key: history })
+  chrome.storage.local.set({ key: history }, function () {})
+  oldText = text
 }
 
 const clearList = () => {
@@ -46,18 +52,19 @@ chrome.commands.onCommand.addListener((command) => {
 
 chrome.runtime.onMessage.addListener(function onMessageFunc(
   message,
+  sender,
   sendResponse
 ) {
   if (message.message.indexOf('deleteMessage') != -1) {
     let deleteIndex = Number(message.message.slice(0, 1))
     deleteContent(deleteIndex)
-  }
-  if (message.message === 'deleteStorage is called!') {
+  }else if (message.message === 'deleteStorage is called!') {
     clearList()
+  }else{
+    sendResponse(user);
+    console.log("確認 : get-user-data")
+    selectionText = message.message;
   }
-  if (message === 'get-user-data') {
-    sendResponse(user)
-  }
-  selectionText = message.message
+
   return true
 })
