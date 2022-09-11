@@ -2,7 +2,7 @@
 import './App.css'
 import { useState, useEffect } from 'react'
 import './App.css'
-import Top from './components/top'
+import Top from './components/Top'
 
 function App() {
   const [datas, setData] = useState([''])
