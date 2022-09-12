@@ -10,7 +10,7 @@ const user = {
 }
 
 const copyText = (text) => {
-  if(text === oldText) {
+  if(text === oldText || !text ) {
     return
   }
   history.push(text)
@@ -59,8 +59,8 @@ chrome.runtime.onMessage.addListener(function onMessageFunc(
     deleteContent(deleteIndex)
   }else if (message.message === 'deleteStorage is called!') {
     clearList()
-  }else{
-    sendResponse(user);
+  }else {
+    //sendResponse(user);
     selectionText = message.message;
   }
 
