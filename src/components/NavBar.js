@@ -1,12 +1,15 @@
+/*global chrome*/
 import AppBar from '@mui/material/AppBar'
 import Box from '@mui/material/Box'
 import Toolbar from '@mui/material/Toolbar'
 import IconButton from '@mui/material/IconButton'
 import Typography from '@mui/material/Typography'
 import DownloadIcon from '@mui/icons-material/Download'
-import SettingsIcon from '@mui/icons-material/Settings'
+// import SettingsIcon from '@mui/icons-material/Settings'
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline'
 import UploadIcon from '@mui/icons-material/Upload'
+import LinkIcon from '@mui/icons-material/Link';
+import CopyToClipboard from './Clipboard'
 
 export default function NavBar(props) {
   const download = (data) => {
@@ -22,6 +25,21 @@ export default function NavBar(props) {
     setTimeout(() => {
       window.URL.revokeObjectURL(objUrl)
     }, 250)
+  }
+
+  const copyURL = (url) => {
+    chrome.runtime.sendMessage({
+      message: url,
+      type: "copyURL",
+    })
+  }
+  const getURL = () => {
+    chrome.tabs.query({'active': true, 'lastFocusedWindow': true}, tabs => {
+      let url = tabs[0].url
+      console.log(url)
+      CopyToClipboard(url)
+      copyURL(url)
+    });
   }
 
   return (
@@ -69,12 +87,13 @@ export default function NavBar(props) {
           </Box>
           <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
             <IconButton
+              onClick={getURL}
               size='large'
               aria-label='show more'
               aria-haspopup='true'
               color='inherit'
             >
-              <SettingsIcon />
+              <LinkIcon />
             </IconButton>
           </Box>
         </Toolbar>

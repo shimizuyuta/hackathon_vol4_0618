@@ -1,16 +1,11 @@
 /*global chrome*/
-// import copyToClipboard from '../src/components/Clipboard/Clipboard'
 
 let selectionText
 export let history = []
 let oldText = ""
 
-const user = {
-  username: 'demo-user',
-}
-
 const copyText = (text) => {
-  if(text === oldText) {
+  if(text === oldText || !text ) {
     return
   }
   history.push(text)
@@ -29,16 +24,9 @@ const deleteContent = (index) => {
   chrome.storage.local.set({ key: history })
 }
 
-const getURL = () => {
-  chrome.tabs.query({'active': true, 'lastFocusedWindow': true}, function (tabs) {
-    var url = tabs[0].url;
-  });
-}
-
 chrome.commands.onCommand.addListener((command) => {
   switch (command) {
     case 'copyText':
-      getURL();
       copyText(selectionText)
       break
     case 'clearList':
@@ -49,19 +37,23 @@ chrome.commands.onCommand.addListener((command) => {
   }
 })
 
-chrome.runtime.onMessage.addListener(function onMessageFunc(
-  message,
-  sender,
-  sendResponse
-) {
-  if (message.message.indexOf('deleteMessage') != -1) {
-    let deleteIndex = Number(message.message.slice(0, 1))
-    deleteContent(deleteIndex)
-  }else if (message.message === 'deleteStorage is called!') {
-    clearList()
-  }else{
-    sendResponse(user);
-    selectionText = message.message;
+chrome.runtime.onMessage.addListener(function onMessageFunc(message) {
+  switch(message.type){
+    case 'message':
+      selectionText = message.message
+      break
+    case 'deleteStorage':
+      clearList()
+      break
+    case 'deleteContent':
+      deleteContent(message.message)
+      break
+    case 'copyURL':
+      console.log("URL: "+message.message)
+      copyText(message.message)
+      break
+    default:
+      console.log("ERROR SWITCH")
   }
 
   return true
