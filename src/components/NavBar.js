@@ -27,13 +27,18 @@ export default function NavBar(props) {
     }, 250)
   }
 
+  const copyURL = (url) => {
+    chrome.runtime.sendMessage({
+      message: url,
+      type: "copyURL",
+    })
+  }
   const getURL = () => {
     chrome.tabs.query({'active': true, 'lastFocusedWindow': true}, tabs => {
-      for(let i=0; i<tabs.length; i++){
-        //console.log(tabs[i].title);
-      }
-      console.log(tabs[0].url)
-      CopyToClipboard(tabs[0].url)
+      let url = tabs[0].url
+      console.log(url)
+      CopyToClipboard(url)
+      copyURL(url)
     });
   }
 
