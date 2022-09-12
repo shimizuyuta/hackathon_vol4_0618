@@ -22,7 +22,7 @@ function History(props) {
           margin: '.6rem',
         }}
       >
-        {datas.map((value, index) => (
+        {datas && datas.map((value, index) => (
           <List
             sx={{
               padding: '5px',

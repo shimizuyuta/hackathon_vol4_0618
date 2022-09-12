@@ -2,17 +2,10 @@
 import './App.css'
 import { useState, useEffect } from 'react'
 import './App.css'
-import Top from './components/Top'
+import Top from './components/top'
 
 function App() {
-  const [datas, setData] = useState([''])
-
-  useEffect(() => {
-    chrome.storage.local.get('key', function (value) {
-      setData(value.key)
-    })
-  }, [])
-
+  const [datas, setData] = useState([])
   const deleteStorage = () => {
     chrome.runtime.sendMessage({
       message: 'deleteStorage is called!',
@@ -32,6 +25,12 @@ function App() {
       setData(value.key)
     })
   })
+
+  useEffect(() => {
+    chrome.storage.local.get('key', function (value) {
+      setData(value.key)
+    })
+  }, [])
 
   return (
     <div>
