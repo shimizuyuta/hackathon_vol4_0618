@@ -15,15 +15,15 @@ function App() {
 
   const deleteStorage = () => {
     chrome.runtime.sendMessage({
-      message: 'deleteStorage is called!',
+      type: 'deleteStorage',
     })
     setData([])
   }
 
   const deleteContent = (index) => {
-    let deleteMessage = index + 'deleteMessage'
     chrome.runtime.sendMessage({
-      message: deleteMessage,
+      message: index,
+      type: 'deleteContent',
     })
   }
 
