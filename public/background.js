@@ -1,13 +1,8 @@
 /*global chrome*/
-// import copyToClipboard from '../src/components/Clipboard/Clipboard'
 
 let selectionText
 export let history = []
 let oldText = ""
-
-const user = {
-  username: 'demo-user',
-}
 
 const copyText = (text) => {
   if(text === oldText || !text ) {
@@ -29,16 +24,9 @@ const deleteContent = (index) => {
   chrome.storage.local.set({ key: history })
 }
 
-const getURL = () => {
-  chrome.tabs.query({'active': true, 'lastFocusedWindow': true}, function (tabs) {
-    var url = tabs[0].url;
-  });
-}
-
 chrome.commands.onCommand.addListener((command) => {
   switch (command) {
     case 'copyText':
-      getURL();
       copyText(selectionText)
       break
     case 'clearList':
