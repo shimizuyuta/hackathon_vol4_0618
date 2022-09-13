@@ -2,3 +2,10 @@ body {
   min-width: 500px;
   min-height: 500px;
 }
+
+.ellipsis {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
