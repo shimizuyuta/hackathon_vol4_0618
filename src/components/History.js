@@ -10,6 +10,7 @@ import { Box } from '@mui/system'
 import InputAdornment from '@mui/material/InputAdornment'
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight'
 import { CopyToClickboard } from '../modules/index'
+import { deleteContent } from '../modules/chrome'
 
 function History(props) {
   const datas = props.datas
@@ -46,7 +47,7 @@ function History(props) {
                 </IconButton>
                 <IconButton
                   onClick={() => {
-                    props.deleteContent(index)
+                    deleteContent(index)
                   }}
                 >
                   <DeleteIcon />

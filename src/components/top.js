@@ -8,13 +8,7 @@ function Top(props) {
         deleteStorage={props.deleteStorage}
         datas={props.datas}
         output={props.output}
-        contents={
-          <History
-            textData={props.textData}
-            datas={props.datas}
-            deleteContent={props.deleteContent}
-          />
-        }
+        contents={<History textData={props.textData} datas={props.datas} />}
       />
     </div>
   )

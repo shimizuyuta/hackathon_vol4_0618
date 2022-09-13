@@ -15,3 +15,10 @@ export const getURL = () => {
     copyURL(url)
   })
 }
+
+export const deleteContent = (index) => {
+  chrome.runtime.sendMessage({
+    message: index,
+    type: 'deleteContent',
+  })
+}

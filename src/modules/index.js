@@ -16,3 +16,11 @@ export const download = (data) => {
 export const CopyToClickboard = (text) => {
   navigator.clipboard.writeText(text)
 }
+
+export const output = (data, callback) => {
+  let out = ''
+  for (var i = 0; i < data.length; i++) {
+    out += data[i] + '\n'
+  }
+  callback(out)
+}

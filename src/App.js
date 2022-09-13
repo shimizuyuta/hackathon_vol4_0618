@@ -7,25 +7,20 @@ import Top from './components/top'
 function App() {
   const [datas, setData] = useState([])
   const [textData, setTextData] = useState([])
+
   const output = (data) => {
     var out = ''
     for (var i = 0; i < data.length; i++) {
-      out += data[i] + '\n\n'
+      out += data[i] + '\n'
     }
     setTextData(out)
   }
+
   const deleteStorage = () => {
     chrome.runtime.sendMessage({
       type: 'deleteStorage',
     })
     setData([])
-  }
-
-  const deleteContent = (index) => {
-    chrome.runtime.sendMessage({
-      message: index,
-      type: 'deleteContent',
-    })
   }
 
   chrome.storage.onChanged.addListener(function () {
@@ -45,7 +40,6 @@ function App() {
       <Top
         datas={datas}
         deleteStorage={deleteStorage}
-        deleteContent={deleteContent}
         output={output}
         textData={textData}
       />
