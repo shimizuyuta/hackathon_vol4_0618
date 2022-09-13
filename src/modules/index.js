@@ -13,6 +13,6 @@ export const download = (data) => {
   }, 250)
 }
 
-export const CopyToClickboard = (text) =>{
+export const CopyToClickboard = (text) => {
   navigator.clipboard.writeText(text)
-} 
+}

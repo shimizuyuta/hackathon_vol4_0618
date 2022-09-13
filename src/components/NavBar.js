@@ -6,9 +6,9 @@ import Typography from '@mui/material/Typography'
 import DownloadIcon from '@mui/icons-material/Download'
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline'
 import UploadIcon from '@mui/icons-material/Upload'
-import LinkIcon from '@mui/icons-material/Link';
-import {download} from '../modules/index'
-import {  getURL } from '../modules/chrome'
+import LinkIcon from '@mui/icons-material/Link'
+import { download } from '../modules/index'
+import { getURL } from '../modules/chrome'
 import { useState } from 'react'
 
 export default function NavBar(props) {
@@ -17,9 +17,12 @@ export default function NavBar(props) {
   return (
     <Box sx={{ flexGrow: 1, padding: 0 }}>
       <AppBar position='static'>
-        <Toolbar sx={{bgcolor:'rgb(92 65 45)'}}>
-          <img src={`${process.env.PUBLIC_URL}/images/32.png`} alt='ClipRoach-logo'/>
-          <Typography variant='h6' noWrap component='div' sx={{ml:1}}>
+        <Toolbar sx={{ bgcolor: 'rgb(92 65 45)' }}>
+          <img
+            src={`${process.env.PUBLIC_URL}/images/32.png`}
+            alt='ClipRoach-logo'
+          />
+          <Typography variant='h6' noWrap component='div' sx={{ ml: 1 }}>
             Clip-Roach
           </Typography>
           <Box sx={{ flexGrow: 1 }} />

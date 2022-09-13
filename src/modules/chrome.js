@@ -1,17 +1,17 @@
 /*global chrome*/
-import { CopyToClickboard } from "./index";
-export const copyURL = (url) =>{
+import { CopyToClickboard } from './index'
+export const copyURL = (url) => {
   chrome.runtime.sendMessage({
     message: url,
-    type: "copyURL",
+    type: 'copyURL',
   })
 }
 
 export const getURL = () => {
-  chrome.tabs.query({'active': true, 'lastFocusedWindow': true}, tabs => {
+  chrome.tabs.query({ active: true, lastFocusedWindow: true }, (tabs) => {
     let url = tabs[0].url
     console.log(url)
     CopyToClickboard(url)
     copyURL(url)
-  });
+  })
 }

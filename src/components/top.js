@@ -2,9 +2,6 @@ import NavBar from './NavBar'
 import History from './History'
 
 function Top(props) {
-
-
-
   return (
     <div>
       <NavBar
