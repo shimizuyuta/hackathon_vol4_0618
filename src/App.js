@@ -6,6 +6,14 @@ import Top from './components/top'
 
 function App() {
   const [datas, setData] = useState([])
+  const [textData, setTextData] = useState([])
+  const output = (data) => {
+    var out = ''
+    for (var i = 0; i < data.length; i++) {
+      out += data[i] + '\n\n'
+    }
+    setTextData(out)
+  }
   const deleteStorage = () => {
     chrome.runtime.sendMessage({
       type: 'deleteStorage',
@@ -38,6 +46,8 @@ function App() {
         datas={datas}
         deleteStorage={deleteStorage}
         deleteContent={deleteContent}
+        output={output}
+        textData={textData}
       />
     </div>
   )

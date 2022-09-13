@@ -1,46 +1,18 @@
-/*global chrome*/
 import AppBar from '@mui/material/AppBar'
 import Box from '@mui/material/Box'
 import Toolbar from '@mui/material/Toolbar'
 import IconButton from '@mui/material/IconButton'
 import Typography from '@mui/material/Typography'
 import DownloadIcon from '@mui/icons-material/Download'
-// import SettingsIcon from '@mui/icons-material/Settings'
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline'
 import UploadIcon from '@mui/icons-material/Upload'
 import LinkIcon from '@mui/icons-material/Link';
-import CopyToClipboard from './Clipboard'
+import {download} from '../modules/index'
+import {  getURL } from '../modules/chrome'
+import { useState } from 'react'
 
 export default function NavBar(props) {
-  const download = (data) => {
-    for (var i = 0; i < data.length; i++) {
-      data[i] = data[i] + '\n\n'
-    }
-    const newBlob = new Blob(data)
-    const objUrl = window.URL.createObjectURL(newBlob)
-    const link = document.createElement('a')
-    link.href = objUrl
-    link.download = 'clip-roach.txt'
-    link.click()
-    setTimeout(() => {
-      window.URL.revokeObjectURL(objUrl)
-    }, 250)
-  }
-
-  const copyURL = (url) => {
-    chrome.runtime.sendMessage({
-      message: url,
-      type: "copyURL",
-    })
-  }
-  const getURL = () => {
-    chrome.tabs.query({'active': true, 'lastFocusedWindow': true}, tabs => {
-      let url = tabs[0].url
-      console.log(url)
-      CopyToClipboard(url)
-      copyURL(url)
-    });
-  }
+  const [textData, setTextData] = useState('')
 
   return (
     <Box sx={{ flexGrow: 1, padding: 0 }}>

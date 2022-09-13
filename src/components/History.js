@@ -4,12 +4,12 @@ import ListItemIcon from '@mui/material/ListItemIcon'
 import ListItemText from '@mui/material/ListItemText'
 import IconButton from '@mui/material/IconButton'
 import ContentCopyIcon from '@mui/icons-material/ContentCopy'
-import CopyToClickboard from './Clipboard'
 import DeleteIcon from '@mui/icons-material/Delete'
 import TextField from '@mui/material/TextField'
 import { Box } from '@mui/system'
 import InputAdornment from '@mui/material/InputAdornment'
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight'
+import {CopyToClickboard} from '../modules/index'
 
 function History(props) {
   const datas = props.datas
