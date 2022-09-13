@@ -9,11 +9,8 @@ import UploadIcon from '@mui/icons-material/Upload'
 import LinkIcon from '@mui/icons-material/Link'
 import { download } from '../modules/index'
 import { getURL } from '../modules/chrome'
-import { useState } from 'react'
 
 export default function NavBar(props) {
-  const [textData, setTextData] = useState('')
-
   return (
     <Box sx={{ flexGrow: 1, padding: 0 }}>
       <AppBar position='static'>
