@@ -13,6 +13,9 @@ import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight'
 
 function History(props) {
   const datas = props.datas
+  // const reversedDatas = datas.reduceRight((p, c) => [...p, c], [])
+  // console.log(datas)
+  // console.log(reversedDatas)
   return (
     <>
       <Box
@@ -43,6 +46,16 @@ function History(props) {
               <IconButton onClick={() => CopyToClickboard(value)}>
                 <ContentCopyIcon />
               </IconButton>
+              {props.isDescendingOrder
+              ?
+              <IconButton
+                onClick={() => {
+                  props.deleteContent(datas.length - index - 1)
+                }}
+              >
+                <DeleteIcon />
+              </IconButton>
+              :
               <IconButton
                 onClick={() => {
                   props.deleteContent(index)
@@ -50,6 +63,7 @@ function History(props) {
               >
                 <DeleteIcon />
               </IconButton>
+              }
             </ListItem>
           </List>
         ))}

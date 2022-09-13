@@ -6,6 +6,7 @@ import Top from './components/Top'
 
 function App() {
   const [datas, setData] = useState([''])
+  const [isDescendingOrder, setIsDescendingOrder] = useState(false) // 降順かどうか
 
   useEffect(() => {
     chrome.storage.local.get('key', function (value) {
@@ -33,12 +34,21 @@ function App() {
     })
   })
 
+  const changeOrder = () => {
+    //truefalse処理
+    setIsDescendingOrder(!isDescendingOrder)
+    //反転処理
+    setData(datas.reverse())
+  }
+
   return (
     <div>
       <Top
         datas={datas}
-        deleteStorage={deleteStorage}
-        deleteContent={deleteContent}
+        deleteStorage={deleteStorage} // top.js→Navbar.jsに渡している
+        changeOrder={changeOrder} // top.js→Navbar.jsに渡している
+        deleteContent={deleteContent} // top.js→history.jsに渡している
+        isDescendingOrder={isDescendingOrder} // top.js→history.jsに渡している
       />
     </div>
   )

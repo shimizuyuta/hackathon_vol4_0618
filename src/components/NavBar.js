@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import AppBar from '@mui/material/AppBar'
 import Box from '@mui/material/Box'
 import Toolbar from '@mui/material/Toolbar'
@@ -7,8 +8,13 @@ import DownloadIcon from '@mui/icons-material/Download'
 import SettingsIcon from '@mui/icons-material/Settings'
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline'
 import UploadIcon from '@mui/icons-material/Upload'
+import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
+import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
 
 export default function NavBar(props) {
+  const [isDescendingOrder, setIsDescendingOrder] = useState(false)
+
+
   const download = (data) => {
     for (var i = 0; i < data.length; i++) {
       data[i] = data[i] + '\n\n'
@@ -75,6 +81,23 @@ export default function NavBar(props) {
               color='inherit'
             >
               <SettingsIcon />
+            </IconButton>
+          </Box>
+          <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
+          <IconButton
+              onClick={() => {
+                props.changeOrder();
+                setIsDescendingOrder(!isDescendingOrder)
+              }}
+              size='large'
+              aria-label='show more'
+              aria-haspopup='true'
+              color='inherit'
+            >
+            {isDescendingOrder 
+            ? <ArrowUpwardIcon />
+            : <ArrowDownwardIcon />
+            }
             </IconButton>
           </Box>
         </Toolbar>

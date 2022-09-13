@@ -17,6 +17,7 @@ function Top(props) {
     <div>
       <NavBar
         deleteStorage={props.deleteStorage}
+        changeOrder={props.changeOrder}
         datas={props.datas}
         output={output}
         contents={
@@ -24,6 +25,7 @@ function Top(props) {
             textData={textData}
             datas={props.datas}
             deleteContent={props.deleteContent}
+            isDescendingOrder={props.isDescendingOrder}
           />
         }
       />
