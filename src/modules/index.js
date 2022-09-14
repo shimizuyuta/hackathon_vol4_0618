@@ -18,9 +18,11 @@ export const CopyToClickboard = (text) => {
 }
 
 export const returnOutput = (data) => {
-  let out = ''
-  for (var i = 0; i < data.length; i++) {
-    out += data[i] + '\n'
-  }
-  return out
+  return new Promise((resolve) =>{
+    let out = ''
+    for (var i = 0; i < data.length; i++) {
+      out += data[i] + '\n'
+    }
+    resolve(out)
+  })
 }

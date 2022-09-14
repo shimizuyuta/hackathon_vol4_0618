@@ -12,9 +12,7 @@ import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight'
 import { CopyToClickboard } from '../modules/index'
 import { deleteContent } from '../modules/chrome'
 
-function History(props) {
-  const datas = props.datas
-  console.log(props, 'Props+++++++')
+function History({datas,textData}) {
   return (
     <>
       <Box
@@ -66,7 +64,7 @@ function History(props) {
       >
         <TextField
           id='outlined-textarea'
-          value={props.textData}
+          value={textData}
           multiline
           fullWidth
           rows={3}
@@ -74,7 +72,7 @@ function History(props) {
           InputProps={{
             endAdornment: (
               <InputAdornment position='end'>
-                <IconButton onClick={() => CopyToClickboard(props.textData)}>
+                <IconButton onClick={() => CopyToClickboard(textData)}>
                   <ContentCopyIcon />
                 </IconButton>
               </InputAdornment>

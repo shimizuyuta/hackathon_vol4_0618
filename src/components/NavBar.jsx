@@ -10,7 +10,7 @@ import LinkIcon from '@mui/icons-material/Link'
 import { download } from '../modules/index'
 import { getURL } from '../modules/chrome'
 
-export default function NavBar(props) {
+export default function NavBar({datas,deleteStorage,output}) {
   return (
     <Box sx={{ flexGrow: 1, padding: 0 }}>
       <AppBar position='static'>
@@ -28,7 +28,7 @@ export default function NavBar(props) {
           </Box>
           <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
             <IconButton
-              onClick={() => props.output(props.datas)}
+              onClick={() => output(datas)}
               aria-label='download'
               aria-haspopup='true'
               color='inherit'
@@ -38,7 +38,7 @@ export default function NavBar(props) {
           </Box>
           <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
             <IconButton
-              onClick={() => download(props.datas)}
+              onClick={() => download(datas)}
               size='large'
               aria-label='show more'
               aria-haspopup='true'
@@ -49,7 +49,7 @@ export default function NavBar(props) {
           </Box>
           <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
             <IconButton
-              onClick={() => props.deleteStorage()}
+              onClick={() => deleteStorage()}
               size='large'
               aria-label='show more'
               aria-haspopup='true'
@@ -71,7 +71,6 @@ export default function NavBar(props) {
           </Box>
         </Toolbar>
       </AppBar>
-      <Box component='main'>{props.contents}</Box>
     </Box>
   )
 }

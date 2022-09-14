@@ -11,7 +11,8 @@ function App() {
   const [textData, setTextData] = useState([])
 
   const output = (data) => {
-    returnOutput(data).then((out) => {
+    returnOutput(data)
+    .then((out) => {
       setTextData(out)
     })
   }
