@@ -8,7 +8,7 @@ import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline'
 import UploadIcon from '@mui/icons-material/Upload'
 import LinkIcon from '@mui/icons-material/Link'
 import { download } from '../modules/index'
-import { getURL } from '../modules/chrome'
+import { copyURL } from '../modules/chrome'
 
 export default function NavBar({datas,deleteStorage,output}) {
   return (
@@ -60,7 +60,7 @@ export default function NavBar({datas,deleteStorage,output}) {
           </Box>
           <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
             <IconButton
-              onClick={getURL}
+              onClick={copyURL}
               size='large'
               aria-label='show more'
               aria-haspopup='true'

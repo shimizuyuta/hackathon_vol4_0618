@@ -39,27 +39,6 @@
         "mac": "MacCtrl+Shift+H"
       },
       "description": "Run extension."
-    },
-    "clearList": {
-      "suggested_key": {
-        "default": "Ctrl+Shift+Y",
-        "mac": "MacCtrl+Shift+Y"
-      },
-      "description": "Clear List."
-    },
-    "copyText": {
-      "suggested_key": {
-        "default": "Ctrl+Shift+S",
-        "mac": "MacCtrl+Shift+S"
-      },
-      "description": "Copy: Add List."
-    },
-    "showList": {
-      "suggested_key": {
-        "default": "Ctrl+Shift+L",
-        "mac": "MacCtrl+Shift+L"
-      },
-      "description": "Show List."
     }
   },
   "icons": {

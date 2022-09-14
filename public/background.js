@@ -1,6 +1,4 @@
 /*global chrome*/
-
-let selectionText
 let history = []
 let oldText = ''
 
@@ -10,18 +8,10 @@ const setLocalStorage = (setData) => {
 }
 
 const copyText = (text) => {
-  if (text === oldText || !text) {
-    return
-  }
+  if (text === oldText || !text) return
   history.push(text)
   setLocalStorage(history)
   oldText = text
-}
-
-const clearList = () => {
-  chrome.storage.local.clear()
-  history = []
-  setLocalStorage(history)
 }
 
 const deleteContent = (index) => {
@@ -29,33 +19,26 @@ const deleteContent = (index) => {
   setLocalStorage(history)
 }
 
-chrome.commands.onCommand.addListener((command) => {
-  switch (command) {
-    case 'copyText':
-      copyText(selectionText)
-      break
-    case 'clearList':
-      clearList()
-      break
-    default:
-      break
-  }
-})
+const deleteAllContents = () => {
+  chrome.storage.local.clear()
+  history = []
+  setLocalStorage(history)
+}
 
 chrome.runtime.onMessage.addListener(function onMessageFunc(message) {
   switch (message.type) {
-    case 'message':
-      selectionText = message.message
-      break
-    case 'deleteStorage':
-      clearList()
-      break
-    case 'deleteContent':
-      deleteContent(message.message)
+    case 'copy':
+      copyText(message.text)
       break
     case 'copyURL':
-      console.log('URL: ' + message.message)
-      copyText(message.message)
+      console.log('URL: ' + message.url)
+      copyText(message.url)
+      break
+    case 'delete':
+      deleteContent(message.index)
+      break
+    case 'deleteAll':
+      deleteAllContents()
       break
     default:
       return true

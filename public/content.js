@@ -1,17 +1,15 @@
 /*global chrome*/
-document.addEventListener('selectionchange', function (value) {
-  console.log('value',value)
-  let selectionText = window.getSelection().toString()
-  console.log(selectionText)
-  if (selectionText.length) {
+document.addEventListener('copy', async () => {
+  let copiedText = navigator.clipboard ? await navigator.clipboard.readText() : '';
+  if (copiedText.length) {
     try {
-      let payload = {
-        message: selectionText,
-        type: 'message',
+      let message = {
+        text: copiedText,
+        type: 'copy',
       }
-      chrome.runtime.sendMessage(payload)
+      chrome.runtime.sendMessage(message)
     } catch (error) {
       alert('リロードしてください')
     }
   }
-})
+});

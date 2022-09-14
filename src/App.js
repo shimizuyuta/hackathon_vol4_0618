@@ -1,7 +1,7 @@
 /*global chrome*/
 import { useState, useEffect } from 'react'
 import './App.css'
-import { getLocalStorage, deleteLocalStorage } from './modules/chrome'
+import { getLocalStorage, deleteAllContents } from './modules/chrome'
 import { returnOutput } from './modules/index'
 import NavBar from './components/NavBar'
 import History from './components/History'
@@ -18,7 +18,7 @@ function App() {
   }
 
   const deleteStorage = () => {
-    deleteLocalStorage()
+    deleteAllContents()
     setData([])
   }
 
