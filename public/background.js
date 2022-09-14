@@ -1,6 +1,6 @@
 /*global chrome*/
 
-let selectionText
+// let selectionText
 let history = []
 let oldText = ''
 
@@ -31,9 +31,9 @@ const deleteContent = (index) => {
 
 chrome.commands.onCommand.addListener((command) => {
   switch (command) {
-    case 'copyText':
-      copyText(selectionText)
-      break
+    // case 'copyText':
+    //   copyText(selectionText)
+    //   break
     case 'clearList':
       clearList()
       break
@@ -44,8 +44,9 @@ chrome.commands.onCommand.addListener((command) => {
 
 chrome.runtime.onMessage.addListener(function onMessageFunc(message) {
   switch (message.type) {
-    case 'message':
-      selectionText = message.message
+    case 'copy':
+      // selectionText = message.message
+      copyText(message.message)
       break
     case 'deleteStorage':
       clearList()
