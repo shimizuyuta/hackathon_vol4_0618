@@ -1,36 +1,33 @@
 /*global chrome*/
-import './App.css'
 import { useState, useEffect } from 'react'
 import './App.css'
 import Top from './components/top'
-
+import { getLocalStorage, deleteLocalStorage } from './modules/chrome'
+import { returnOutput } from './modules/index'
 function App() {
   const [datas, setData] = useState([])
   const [textData, setTextData] = useState([])
 
   const output = (data) => {
-    var out = ''
-    for (var i = 0; i < data.length; i++) {
-      out += data[i] + '\n'
-    }
-    setTextData(out)
+    returnOutput(data).then((out) => {
+      setTextData(out)
+    })
   }
 
   const deleteStorage = () => {
-    chrome.runtime.sendMessage({
-      type: 'deleteStorage',
-    })
+    deleteLocalStorage()
     setData([])
   }
 
-  chrome.storage.onChanged.addListener(function () {
-    chrome.storage.local.get('key', function (value) {
+  chrome.storage.onChanged.addListener(() => {
+    getLocalStorage().then((value) => {
       setData(value.key)
     })
   })
 
   useEffect(() => {
-    chrome.storage.local.get('key', function (value) {
+    getLocalStorage().then((value) => {
+      console.log(value, 'callback useeffect')
       setData(value.key)
     })
   }, [])

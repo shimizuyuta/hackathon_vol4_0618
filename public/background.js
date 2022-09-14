@@ -1,27 +1,32 @@
 /*global chrome*/
 
 let selectionText
-export let history = []
-let oldText = ""
+let history = []
+let oldText = ''
+
+//storageの扱う関数
+const setLocalStorage = (setData) => {
+  chrome.storage.local.set({ key: setData })
+}
 
 const copyText = (text) => {
-  if(text === oldText || !text ) {
+  if (text === oldText || !text) {
     return
   }
   history.push(text)
-  chrome.storage.local.set({ key: history }, function () {})
+  setLocalStorage(history)
   oldText = text
 }
 
 const clearList = () => {
   chrome.storage.local.clear()
   history = []
-  chrome.storage.local.set({ key: history })
+  setLocalStorage(history)
 }
 
 const deleteContent = (index) => {
   history.splice(index, 1)
-  chrome.storage.local.set({ key: history })
+  setLocalStorage(history)
 }
 
 chrome.commands.onCommand.addListener((command) => {
@@ -38,7 +43,7 @@ chrome.commands.onCommand.addListener((command) => {
 })
 
 chrome.runtime.onMessage.addListener(function onMessageFunc(message) {
-  switch(message.type){
+  switch (message.type) {
     case 'message':
       selectionText = message.message
       break
@@ -49,12 +54,10 @@ chrome.runtime.onMessage.addListener(function onMessageFunc(message) {
       deleteContent(message.message)
       break
     case 'copyURL':
-      console.log("URL: "+message.message)
+      console.log('URL: ' + message.message)
       copyText(message.message)
       break
     default:
-      console.log("ERROR SWITCH")
+      return true
   }
-
-  return true
 })

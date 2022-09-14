@@ -17,10 +17,10 @@ export const CopyToClickboard = (text) => {
   navigator.clipboard.writeText(text)
 }
 
-export const output = (data, callback) => {
+export const returnOutput = (data) => {
   let out = ''
   for (var i = 0; i < data.length; i++) {
     out += data[i] + '\n'
   }
-  callback(out)
+  return out
 }

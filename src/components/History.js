@@ -14,6 +14,7 @@ import { deleteContent } from '../modules/chrome'
 
 function History(props) {
   const datas = props.datas
+  console.log(props, 'Props+++++++')
   return (
     <>
       <Box

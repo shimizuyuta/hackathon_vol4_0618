@@ -2,6 +2,7 @@ import NavBar from './NavBar'
 import History from './History'
 
 function Top(props) {
+  console.log(props, 'top props')
   return (
     <div>
       <NavBar
