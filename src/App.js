@@ -1,9 +1,11 @@
 /*global chrome*/
 import { useState, useEffect } from 'react'
 import './App.css'
-import Top from './components/top'
 import { getLocalStorage, deleteLocalStorage } from './modules/chrome'
 import { returnOutput } from './modules/index'
+import NavBar from './components/NavBar'
+import History from './components/History'
+
 function App() {
   const [datas, setData] = useState([])
   const [textData, setTextData] = useState([])
@@ -34,11 +36,14 @@ function App() {
 
   return (
     <div>
-      <Top
-        datas={datas}
+      <NavBar
         deleteStorage={deleteStorage}
+        datas={datas}
         output={output}
-        textData={textData}
+      />
+      <History 
+        textData={textData} 
+        datas={datas} 
       />
     </div>
   )
