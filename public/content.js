@@ -11,7 +11,7 @@ document.addEventListener('selectionchange', function (value) {
       }
       chrome.runtime.sendMessage(payload)
     } catch (error) {
-      console.log(error, 'エラー発生')
+      alert('リロードしてください')
     }
   }
 })
