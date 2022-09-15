@@ -49,7 +49,7 @@ function History({datas,textData}) {
                     <KeyboardArrowRightIcon />
                   </ListItemIcon>
                 </Box>
-                <ListItemText id={index} primary={value} />
+                <ListItemText className="ellipsis" id={index} primary={value} />
                 <IconButton onClick={() => CopyToClickboard(value)}>
                   <ContentCopyIcon />
                 </IconButton>
