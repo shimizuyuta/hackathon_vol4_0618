@@ -1,6 +1,5 @@
 import List from '@mui/material/List'
 import ListItem from '@mui/material/ListItem'
-import ListItemIcon from '@mui/material/ListItemIcon'
 import ListItemText from '@mui/material/ListItemText'
 import IconButton from '@mui/material/IconButton'
 import ContentCopyIcon from '@mui/icons-material/ContentCopy'
@@ -8,19 +7,79 @@ import DeleteIcon from '@mui/icons-material/Delete'
 import TextField from '@mui/material/TextField'
 import { Box } from '@mui/system'
 import InputAdornment from '@mui/material/InputAdornment'
-import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight'
 import { CopyToClickboard } from '../modules/index'
 import { deleteContent } from '../modules/chrome'
 import Tooltip from '@mui/material/Tooltip';
 import { useState, useEffect } from 'react'
+import Checkbox from '@mui/material/Checkbox';
+// import { valueToPercent } from '@mui/base'
 
 function History({datas,textData}) {
 
   const [text, setText] = useState('text')
+  // チェックされているかのboolean配列
+  const [isChecked, setIsChecked] = useState([])
+  // チェックされているindexのリスト
+  const [checkedIndex, setCheckedIndex] = useState([])
 
   useEffect(() => {
     setText(textData)
   },[textData])
+
+  useEffect(() => {
+    console.log('datasのuseEffect')
+    if(datas){
+      // 履歴全削除時にcheckedIndexもリセット
+      if(!datas.length) setCheckedIndex([])
+      // checkedIndexから履歴分のisCheckedを生成
+      setIsChecked(datas.map((data, index) =>{
+        return checkedIndex.includes(index)
+      }))
+    }
+  },[datas])
+
+  const handleChange = (e,index) => {
+    e.target.checked ? console.log("o") : console.log('x')
+    if(e.target.checked){
+      // 新しくチェックしたとき
+      setCheckedIndex([...checkedIndex, index])
+      setIsChecked(isChecked.map((value,i) => {
+        if(i === index) return true
+        else return value
+      }))
+    }else{
+      // チェック外した時
+      setCheckedIndex(checkedIndex.filter(i => i !== index))
+      setIsChecked(isChecked.map((value,i) => {
+        if(i === index) return false
+        else return value
+      }))
+    }
+  }
+
+  const deleteAction = (index) => {
+    console.log('index : ',index)
+    console.log('checked : ',checkedIndex)
+    setCheckedIndex(checkedIndex.filter(i => i !== index))
+    console.log('削除後 : ',checkedIndex)
+    setCheckedIndex(checkedIndex.map(i => {
+      if(i > index){
+        return i - 1
+      }else{
+        return i
+      }
+    }))
+    deleteContent(index)
+  }
+
+  const handleClick = () => {
+    checkedIndex.sort((first, second) => first - second);
+    console.log('検証 : ',checkedIndex)
+  }
+
+  const handleClick2 = () => {
+    console.log('チェックの配列: ',isChecked)
+  }
 
   return (
     <>
@@ -44,11 +103,10 @@ function History({datas,textData}) {
               key={index}
             >
               <ListItem key={index} disablePadding sx={{ paddingTop: '5px' }}>
-                <Box sx={{ width: '30px' }}>
-                  <ListItemIcon>
-                    <KeyboardArrowRightIcon />
-                  </ListItemIcon>
-                </Box>
+                <Checkbox 
+                  checked={isChecked[index]}
+                  onChange={(e)=>{handleChange(e,index)}}
+                />
                 <ListItemText className="ellipsis" id={index} primary={value} />
                   <Tooltip title="コピー">
                     <IconButton onClick={() => CopyToClickboard(value)}>
@@ -58,7 +116,7 @@ function History({datas,textData}) {
                   <Tooltip title="削除">
                     <IconButton
                       onClick={() => {
-                        deleteContent(index)
+                        deleteAction(index)
                       }}
                     >
                       <DeleteIcon />
@@ -68,6 +126,8 @@ function History({datas,textData}) {
             </List>
           ))}
       </Box>
+      <button onClick={handleClick}>ちぇっく</button>
+      <button onClick={handleClick2}>配列</button>
       <Box
         sx={{
           minHeight: '30vmx',
