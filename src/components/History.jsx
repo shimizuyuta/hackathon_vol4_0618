@@ -12,7 +12,16 @@ import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight'
 import { CopyToClickboard } from '../modules/index'
 import { deleteContent } from '../modules/chrome'
 
+import { useState, useEffect } from 'react'
+
 function History({datas,textData}) {
+
+  const [text, setText] = useState('text')
+
+  useEffect(() => {
+    setText(textData)
+  },[textData])
+
   return (
     <>
       <Box
@@ -64,7 +73,9 @@ function History({datas,textData}) {
       >
         <TextField
           id='outlined-textarea'
-          value={textData}
+          // value={textData}
+          onChange={(e)=>{setText(e.target.value)}}
+          value={text}
           multiline
           fullWidth
           rows={3}
@@ -72,7 +83,7 @@ function History({datas,textData}) {
           InputProps={{
             endAdornment: (
               <InputAdornment position='end'>
-                <IconButton onClick={() => CopyToClickboard(textData)}>
+                <IconButton onClick={() => CopyToClickboard(text)}>
                   <ContentCopyIcon />
                 </IconButton>
               </InputAdornment>
