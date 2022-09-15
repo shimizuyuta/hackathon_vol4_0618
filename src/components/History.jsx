@@ -11,7 +11,7 @@ import InputAdornment from '@mui/material/InputAdornment'
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight'
 import { CopyToClickboard } from '../modules/index'
 import { deleteContent } from '../modules/chrome'
-
+import Tooltip from '@mui/material/Tooltip';
 import { useState, useEffect } from 'react'
 
 function History({datas,textData}) {
@@ -50,16 +50,20 @@ function History({datas,textData}) {
                   </ListItemIcon>
                 </Box>
                 <ListItemText className="ellipsis" id={index} primary={value} />
-                <IconButton onClick={() => CopyToClickboard(value)}>
-                  <ContentCopyIcon />
-                </IconButton>
-                <IconButton
-                  onClick={() => {
-                    deleteContent(index)
-                  }}
-                >
-                  <DeleteIcon />
-                </IconButton>
+                  <Tooltip title="コピー">
+                    <IconButton onClick={() => CopyToClickboard(value)}>
+                      <ContentCopyIcon />
+                    </IconButton>
+                  </Tooltip>
+                  <Tooltip title="削除">
+                    <IconButton
+                      onClick={() => {
+                        deleteContent(index)
+                      }}
+                    >
+                      <DeleteIcon />
+                    </IconButton>
+                  </Tooltip>
               </ListItem>
             </List>
           ))}
@@ -83,9 +87,11 @@ function History({datas,textData}) {
           InputProps={{
             endAdornment: (
               <InputAdornment position='end'>
-                <IconButton onClick={() => CopyToClickboard(text)}>
-                  <ContentCopyIcon />
-                </IconButton>
+                <Tooltip title="コピー">
+                  <IconButton onClick={() => CopyToClickboard(text)}>
+                    <ContentCopyIcon />
+                  </IconButton>
+                </Tooltip>
               </InputAdornment>
             ),
           }}
