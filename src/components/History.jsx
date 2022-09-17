@@ -29,6 +29,8 @@ function History({datas,textData,output}) {
   const [checkedItems, setCheckedItems] = useState([])
   console.log(datas, 'datas')
   console.log('text',text)
+  //checked trueのitemだけが格納される
+  const [inputdata,setInputData] = useState([])
 
   //[{item: "'AA',", checked: false},{item: "'BB',", checked: false}]
   const handleChange = (e) => {
@@ -62,6 +64,19 @@ function History({datas,textData,output}) {
       checkedItems.splice(index,1)
     console.log('更新後のcheckedItems',checkedItems)
     setCheckedItems(checkedItems)
+  }
+
+  const qqqq = () =>{
+    console.log('click qqqqq')
+    let bbbb = []
+    for(const elem of checkedItems){
+      console.log(elem,'elem')
+      if(elem['checked']===true){
+        console.log('true')
+        bbbb.push(elem['item'])
+      }
+    }
+    setInputData(bbbb)
   }
 
   const bbb = () => {
@@ -123,7 +138,7 @@ function History({datas,textData,output}) {
                     />
                   </ListItemIcon>
                 </Box>
-                <button onClick={bbb}>fafafa</button>
+                {/* <button onClick={bbb}>fafafa</button> */}
                 <ListItemText className='ellipsis' id={index} primary={data} />
                 <Tooltip title='コピー'>
                   <IconButton onClick={() => CopyToClickboard(data)}>
@@ -156,7 +171,7 @@ function History({datas,textData,output}) {
             <IconButton
               onClick={() => {
                 setDrawerState(true);
-                output(datas);
+                qqqq()
               }}>
               <ExpandLessIcon />
             </IconButton>
@@ -184,8 +199,11 @@ function History({datas,textData,output}) {
           <TextField
               id='textarea'
               // value={textData}
-              onChange={(e)=>{setText(e.target.value)}}
-              value={text}
+              onChange={(e)=>{
+                console.log(e,'e++++')
+                setText(e.target.value)
+              }}
+              value={inputdata}
               inputRef={ref}
               multiline
               fullWidth

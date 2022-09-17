@@ -6,9 +6,10 @@ import Typography from '@mui/material/Typography'
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline'
 import LinkIcon from '@mui/icons-material/Link'
 import { copyURL } from '../modules/chrome'
+import {download} from '../modules/index'
 import Tooltip from '@mui/material/Tooltip'
-
-
+// import UploadIcon from '@mui/icons-material/Upload'
+import DownloadIcon from '@mui/icons-material/Download'
 export default function NavBar({ datas, deleteStorage, output }) {
   return (
     <Box sx={{ flexGrow: 1, padding: 0 }}>
@@ -25,7 +26,7 @@ export default function NavBar({ datas, deleteStorage, output }) {
           <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
             {/* 右の点マークの中で縦並びにしたいものを記述 */}
           </Box>
-          <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
+          {/* <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
             <Tooltip title='アウトプット'>
               <IconButton
                 onClick={() => output(datas)}
@@ -36,7 +37,7 @@ export default function NavBar({ datas, deleteStorage, output }) {
                 <UploadIcon />
               </IconButton>
             </Tooltip>
-          </Box>
+          </Box> */}
           <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
             <Tooltip title='ダウンロード'>
               <IconButton
