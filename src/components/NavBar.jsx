@@ -3,15 +3,12 @@ import Box from '@mui/material/Box'
 import Toolbar from '@mui/material/Toolbar'
 import IconButton from '@mui/material/IconButton'
 import Typography from '@mui/material/Typography'
-import DownloadIcon from '@mui/icons-material/Download'
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline'
-import UploadIcon from '@mui/icons-material/Upload'
 import LinkIcon from '@mui/icons-material/Link'
-import { download } from '../modules/index'
 import { copyURL } from '../modules/chrome'
 import Tooltip from '@mui/material/Tooltip';
 
-export default function NavBar({datas,deleteStorage,output}) {
+export default function NavBar({datas,deleteStorage}) {
   return (
     <Box sx={{ flexGrow: 1, padding: 0 }}>
       <AppBar position='static'>
@@ -26,31 +23,6 @@ export default function NavBar({datas,deleteStorage,output}) {
           <Box sx={{ flexGrow: 1 }} />
           <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
             {/* 右の点マークの中で縦並びにしたいものを記述 */}
-          </Box>
-          <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
-            <Tooltip title="アウトプット">
-              <IconButton
-                onClick={() => output(datas)}
-                aria-label='download'
-                aria-haspopup='true'
-                color='inherit'
-              >
-                <UploadIcon />
-              </IconButton>
-            </Tooltip>
-          </Box>
-          <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
-            <Tooltip title="ダウンロード">
-              <IconButton
-                onClick={() => download(datas)}
-                size='large'
-                aria-label='show more'
-                aria-haspopup='true'
-                color='inherit'
-              >
-                <DownloadIcon />
-              </IconButton>
-            </Tooltip>
           </Box>
           <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
             <Tooltip title="全削除">

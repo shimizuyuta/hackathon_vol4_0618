@@ -40,11 +40,11 @@ function App() {
       <NavBar
         deleteStorage={deleteStorage}
         datas={datas}
-        output={output}
       />
       <History 
         textData={textData} 
         datas={datas} 
+        output={output}
       />
     </div>
   )
