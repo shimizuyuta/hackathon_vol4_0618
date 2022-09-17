@@ -7,6 +7,7 @@ import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline'
 import UploadIcon from '@mui/icons-material/Upload'
 import LinkIcon from '@mui/icons-material/Link'
 import { copyURL } from '../modules/chrome'
+import Tooltip from '@mui/material/Tooltip';
 
 export default function NavBar({datas,deleteStorage,output}) {
   return (
@@ -25,36 +26,42 @@ export default function NavBar({datas,deleteStorage,output}) {
             {/* 右の点マークの中で縦並びにしたいものを記述 */}
           </Box>
           <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
-            <IconButton
-              onClick={() => output(datas)}
-              aria-label='download'
-              aria-haspopup='true'
-              color='inherit'
-            >
-              <UploadIcon />
-            </IconButton>
+            <Tooltip title="アウトプット">
+              <IconButton
+                onClick={() => output(datas)}
+                aria-label='download'
+                aria-haspopup='true'
+                color='inherit'
+              >
+                <UploadIcon />
+              </IconButton>
+            </Tooltip>
           </Box>
           <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
-            <IconButton
-              onClick={() => deleteStorage()}
-              size='large'
-              aria-label='show more'
-              aria-haspopup='true'
-              color='inherit'
-            >
-              <DeleteOutlineIcon />
-            </IconButton>
+            <Tooltip title="全削除">
+              <IconButton
+                onClick={() => deleteStorage()}
+                size='large'
+                aria-label='show more'
+                aria-haspopup='true'
+                color='inherit'
+              >
+                <DeleteOutlineIcon />
+              </IconButton>
+            </Tooltip>
           </Box>
           <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
-            <IconButton
-              onClick={copyURL}
-              size='large'
-              aria-label='show more'
-              aria-haspopup='true'
-              color='inherit'
-            >
-              <LinkIcon />
-            </IconButton>
+            <Tooltip title="URLコピー">
+              <IconButton
+                onClick={copyURL}
+                size='large'
+                aria-label='show more'
+                aria-haspopup='true'
+                color='inherit'
+              >
+                <LinkIcon />
+              </IconButton>
+            </Tooltip>
           </Box>
         </Toolbar>
       </AppBar>

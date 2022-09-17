@@ -15,15 +15,15 @@ import Drawer from '@mui/material/Drawer';
 import ExpandLessIcon from '@mui/icons-material/ExpandLess';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import DownloadIcon from '@mui/icons-material/Download'
-
 import { download } from '../modules/index'
-
-import { useState, useEffect } from 'react'
+import Tooltip from '@mui/material/Tooltip';
+import { useState, useEffect, createRef } from 'react'
 
 function History({datas,textData}) {
 
   const [text, setText] = useState('text')
   const [isOpenDrawer, setDrawerState] = useState(false)
+  const ref = createRef()
 
   useEffect(() => {
     setText(textData)
@@ -57,16 +57,20 @@ function History({datas,textData}) {
                   </ListItemIcon>
                 </Box>
                 <ListItemText className="ellipsis" id={index} primary={value} />
-                <IconButton onClick={() => CopyToClickboard(value)}>
-                  <ContentCopyIcon />
-                </IconButton>
-                <IconButton
-                  onClick={() => {
-                    deleteContent(index)
-                  }}
-                >
-                  <DeleteIcon />
-                </IconButton>
+                  <Tooltip title="コピー">
+                    <IconButton onClick={() => CopyToClickboard(value)}>
+                      <ContentCopyIcon />
+                    </IconButton>
+                  </Tooltip>
+                  <Tooltip title="削除">
+                    <IconButton
+                      onClick={() => {
+                        deleteContent(index)
+                      }}
+                    >
+                      <DeleteIcon />
+                    </IconButton>
+                  </Tooltip>
               </ListItem>
             </List>
           ))}
@@ -76,8 +80,7 @@ function History({datas,textData}) {
           minHeight: '30vmx',
           margin: '1rem',
           width: '100%',
-        }}
-      >  
+        }}      >  
         <Box className='drawerOn'>
             <IconButton
               onClick={() => setDrawerState(true)}>
@@ -108,6 +111,7 @@ function History({datas,textData}) {
               // value={textData}
               onChange={(e)=>{setText(e.target.value)}}
               value={text}
+              inputRef={ref}
               multiline
               fullWidth
               rows={16}
@@ -115,12 +119,16 @@ function History({datas,textData}) {
               InputProps={{
               endAdornment: (
                 <InputAdornment position='end'>
-                  <IconButton onClick={() => CopyToClickboard(text)}>
-                    <ContentCopyIcon />
-                  </IconButton>
-                  <IconButton onClick={() => download(text)}>
-                    <DownloadIcon />
-                  </IconButton>
+                    <Tooltip title="コピー">
+                      <IconButton onClick={() => CopyToClickboard(ref.current.value)}>
+                        <ContentCopyIcon />
+                      </IconButton>
+                    </Tooltip>
+                    <Tooltip title="Txtでダウンロード">
+                      <IconButton onClick={() => download(ref.current.value)}>
+                        <DownloadIcon />
+                      </IconButton>
+                  </Tooltip>
                 </InputAdornment>
               ),
             }}
