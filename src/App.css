@@ -27,8 +27,12 @@ body {
   margin-top: 40px;
 }
 
-#downloadButton{
+/* #downloadButton{
   position:absolute;
+} */
+
+.aroundTextarea{
+margin-left: 15px;
 }
 
 #textarea::-webkit-scrollbar { 

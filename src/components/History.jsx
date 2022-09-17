@@ -108,7 +108,7 @@ function History({datas,textData,output}) {
             <ExpandMoreIcon />
           </IconButton>
         </Box>
-        <Box>
+        <Box className='aroundTextarea'>
           <TextField
               id='textarea'
               // value={textData}
