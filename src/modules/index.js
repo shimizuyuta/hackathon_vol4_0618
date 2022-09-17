@@ -22,7 +22,7 @@ export const CopyToClickboard = (text) => {
 }
 
 export const returnOutput = (data) => {
-  return new Promise((resolve) =>{
+  return new Promise((resolve) => {
     let out = ''
     for (var i = 0; i < data.length; i++) {
       out += data[i] + '\n'
