@@ -142,6 +142,10 @@ function History({ datas, textData, output }) {
                       onChange={handleChange}
                       id={index}
                       value={data}
+                      style={{
+                        position: "relative",
+                        right: "10px"
+                      }}
                     />
                   </ListItemIcon>
                 </Box>
