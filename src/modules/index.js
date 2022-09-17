@@ -1,6 +1,6 @@
 export const download = (data) => {
-  console.log(data)
-  console.log(typeof data)
+  // console.log(data)
+  // console.log(typeof data)
   for (var i = 0; i < data.length; i++) {
     data[i] = data[i] + '\n'
   }

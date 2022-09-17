@@ -31,7 +31,7 @@ chrome.runtime.onMessage.addListener(function onMessageFunc(message) {
       copyText(message.text)
       break
     case 'copyURL':
-      console.log('URL: ' + message.url)
+      // console.log('URL: ' + message.url)
       copyText(message.url)
       break
     case 'delete':

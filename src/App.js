@@ -11,10 +11,10 @@ function App() {
   const [textData, setTextData] = useState([])
 
   const output = (data) => {
-    console.log('catch click func',data)
+    // console.log('catch click func',data)
     returnOutput(data)
     .then((out) => {
-      console.log('out',out)
+      // console.log('out',out)
       setTextData(out)
     })
   }

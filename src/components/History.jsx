@@ -24,8 +24,8 @@ function History({ datas, textData, output }) {
   const [text, setText] = useState('text')
   const [isOpenDrawer, setDrawerState] = useState(false)
   const [checkedItems, setCheckedItems] = useState([])
-  console.log(datas, 'datas')
-  console.log('text', text)
+  // console.log(datas, 'datas')
+  // console.log('text', text)
   //checked trueのitemだけが格納される
   const ref = useRef([])
   const [inputdata, setInputData] = useState([])
@@ -48,7 +48,7 @@ function History({ datas, textData, output }) {
       } else {
         //入ってないとき
         zzz.push(checkedItem)
-        console.log('該当しないからそのまま配列に入る')
+        // console.log('該当しないからそのまま配列に入る')
       }
       setCheckedItems(zzz)
     })
@@ -56,37 +56,37 @@ function History({ datas, textData, output }) {
   console.log('checkedItems調べ', checkedItems)
 
   const deleteCheckedItem = (index, checkedItem) => {
-    console.log(index, 'index')
-    console.log(checkedItem, 'checkedItem')
+    // console.log(index, 'index')
+    // console.log(checkedItem, 'checkedItem')
     //ストレージから削除
     deleteContent(index)
     //   //[{item: "'AA',", checked: false},{item: "'BB',", checked: false}]
-    console.log(checkedItems, 'checkedItems++')
+    // console.log(checkedItems, 'checkedItems++')
     checkedItems.splice(index, 1)
-    console.log('更新後のcheckedItems', checkedItems)
+    // console.log('更新後のcheckedItems', checkedItems)
     setCheckedItems(checkedItems)
   }
 
   const qqqq = () => {
-    console.log('click qqqqq')
+    // console.log('click qqqqq')
     let bbbb = []
     for (const elem of checkedItems) {
-      console.log(elem, 'elem')
+      // console.log(elem, 'elem')
       if (elem['checked'] === true) {
-        console.log('true')
+        // console.log('true')
         bbbb.push(elem['item'])
       }
     }
     setInputData(bbbb)
     // ref.current = inputdata
-    console.log(ref.current, 'ref++++++++++++++++')
+    // console.log(ref.current, 'ref++++++++++++++++')
   }
 
   const handleChange2 = (e) => {
-    console.log('e000000', e.target)
-    console.log('e000000', e.target.value)
-    console.log(ref.current.value, 'handlechnage2')
-    console.log(ref.current, 'handlechnage2')
+    // console.log('e000000', e.target)
+    // console.log('e000000', e.target.value)
+    // console.log(ref.current.value, 'handlechnage2')
+    // console.log(ref.current, 'handlechnage2')
   }
 
   useEffect(() => {
@@ -94,15 +94,15 @@ function History({ datas, textData, output }) {
   }, [textData])
 
   useEffect(() => {
-    console.log('datas === undefined', datas === undefined)
+    // console.log('datas === undefined', datas === undefined)
     if (datas === undefined) {
       setCheckedItems([])
     } else {
-      console.log('ここ？', datas)
+      // console.log('ここ？', datas)
       let sample = datas.map((data) => {
         return { item: data, checked: false }
       })
-      console.log('これが追加されるお', [...sample])
+      // console.log('これが追加されるお', [...sample])
       setCheckedItems([...sample])
     }
   }, [datas])
@@ -207,7 +207,7 @@ function History({ datas, textData, output }) {
               <TextField
                 id='textarea'
                 onChange={(e) => {
-                  console.log(e.target.value, 'e++++')
+                  // console.log(e.target.value, 'e++++')
                   handleChange2(e)
                 }}
                 defaultValue={inputdata}
