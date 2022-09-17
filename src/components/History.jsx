@@ -12,11 +12,12 @@ import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight'
 import { CopyToClickboard } from '../modules/index'
 import { deleteContent } from '../modules/chrome'
 import Tooltip from '@mui/material/Tooltip';
-import { useState, useEffect } from 'react'
+import { useState, useEffect, createRef } from 'react'
 
 function History({datas,textData}) {
 
   const [text, setText] = useState('text')
+  const ref = createRef()
 
   useEffect(() => {
     setText(textData)
@@ -78,8 +79,7 @@ function History({datas,textData}) {
         <TextField
           id='outlined-textarea'
           // value={textData}
-          onChange={(e)=>{setText(e.target.value)}}
-          value={text}
+          inputRef={ref}
           multiline
           fullWidth
           rows={3}
@@ -88,7 +88,7 @@ function History({datas,textData}) {
             endAdornment: (
               <InputAdornment position='end'>
                 <Tooltip title="コピー">
-                  <IconButton onClick={() => CopyToClickboard(text)}>
+                  <IconButton onClick={() => CopyToClickboard(ref.current.value)}>
                     <ContentCopyIcon />
                   </IconButton>
                 </Tooltip>
