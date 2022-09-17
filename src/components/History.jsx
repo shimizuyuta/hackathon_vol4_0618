@@ -11,12 +11,19 @@ import InputAdornment from '@mui/material/InputAdornment'
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight'
 import { CopyToClickboard } from '../modules/index'
 import { deleteContent } from '../modules/chrome'
+import Drawer from '@mui/material/Drawer';
+import ExpandLessIcon from '@mui/icons-material/ExpandLess';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import DownloadIcon from '@mui/icons-material/Download'
+
+import { download } from '../modules/index'
 
 import { useState, useEffect } from 'react'
 
 function History({datas,textData}) {
 
   const [text, setText] = useState('text')
+  const [isOpenDrawer, setDrawerState] = useState(false)
 
   useEffect(() => {
     setText(textData)
@@ -70,27 +77,58 @@ function History({datas,textData}) {
           margin: '1rem',
           width: '100%',
         }}
-      >
-        <TextField
-          id='outlined-textarea'
-          // value={textData}
-          onChange={(e)=>{setText(e.target.value)}}
-          value={text}
-          multiline
-          fullWidth
-          rows={3}
-          maxRows={10}
-          InputProps={{
-            endAdornment: (
-              <InputAdornment position='end'>
-                <IconButton onClick={() => CopyToClickboard(text)}>
-                  <ContentCopyIcon />
-                </IconButton>
-              </InputAdornment>
-            ),
+      >  
+        <Box className='drawerOn'>
+            <IconButton
+              onClick={() => setDrawerState(true)}>
+              <ExpandLessIcon />
+            </IconButton>
+          </Box>
+        <Box className='drawer'>
+        <Drawer
+          PaperProps={{sx: { height: "90%" },}}
+          hideBackdrop='true'
+          anchor='bottom'
+          open={isOpenDrawer}
+          onClose={() => {
+          setDrawerState(false)
           }}
-          sx={{ width: '470px' }}
-        />
+        >
+        <Box className='drawer'>
+          <IconButton 
+          id='drawerOff'
+          onClick={() => setDrawerState(false)}
+          >
+            <ExpandMoreIcon />
+          </IconButton>
+        </Box>
+        <Box>
+          <TextField
+              id='textarea'
+              // value={textData}
+              onChange={(e)=>{setText(e.target.value)}}
+              value={text}
+              multiline
+              fullWidth
+              rows={16}
+              maxRows={50}
+              InputProps={{
+              endAdornment: (
+                <InputAdornment position='end'>
+                  <IconButton onClick={() => CopyToClickboard(text)}>
+                    <ContentCopyIcon />
+                  </IconButton>
+                  <IconButton onClick={() => download(text)}>
+                    <DownloadIcon />
+                  </IconButton>
+                </InputAdornment>
+              ),
+            }}
+            sx={{ width: '470px' }}
+          />
+        </Box>
+        </Drawer>
+        </Box>
       </Box>
     </>
   )

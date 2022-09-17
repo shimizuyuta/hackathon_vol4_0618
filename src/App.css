@@ -9,3 +9,27 @@ body {
   -webkit-line-clamp: 2;
   overflow: hidden;
 }
+
+.drawerOn {
+  position: absolute;
+  bottom: 0;
+  right: 45%;
+}
+
+#drawerOff {
+  position: absolute;
+  top: 0;
+  right: 45%;
+}
+
+.drawer{
+  margin-top: 40px;
+}
+
+#downloadButton{
+  position:absolute;
+}
+
+#textarea::-webkit-scrollbar { 
+  display: none;
+}
