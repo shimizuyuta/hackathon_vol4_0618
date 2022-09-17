@@ -13,12 +13,14 @@ import { useState, useEffect, createRef } from 'react'
 import Tooltip from '@mui/material/Tooltip'
 import { Box } from '@mui/system'
 import Checkbox from '@mui/material/Checkbox'
+import { InputAdornment, TextField } from '@mui/material'
 
 function History({ datas, textData }) {
-  const [text, setText] = useState('text')
+  const [text, setText] = useState('')
   const ref = createRef()
   const [checkedItems, setCheckedItems] = useState([])
   console.log(datas, 'datas')
+  console.log('text',text)
 
   //[{item: "'AA',", checked: false},{item: "'BB',", checked: false}]
   const handleChange = (e) => {
@@ -142,9 +144,9 @@ function History({ datas, textData }) {
           width: '100%',
         }}
       >
-        {/* <TextField
+        <TextField
           id='outlined-textarea'
-          // value={textData}
+          value={textData}
           inputRef={ref}
           multiline
           fullWidth
@@ -162,7 +164,7 @@ function History({ datas, textData }) {
             ),
           }}
           sx={{ width: '470px' }}
-        /> */}
+        />
       </Box>
     </>
   )
