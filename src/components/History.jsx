@@ -9,14 +9,22 @@ import DeleteIcon from '@mui/icons-material/Delete'
 // import InputAdornment from '@mui/material/InputAdornment'
 import { CopyToClickboard } from '../modules/index'
 import { deleteContent } from '../modules/chrome'
+import Drawer from '@mui/material/Drawer';
+import ExpandLessIcon from '@mui/icons-material/ExpandLess';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+// import DownloadIcon from '@mui/icons-material/Download'
+// import { download } from '../modules/index'
+import Tooltip from '@mui/material/Tooltip';
 import { useState, useEffect, createRef } from 'react'
-import Tooltip from '@mui/material/Tooltip'
 import { Box } from '@mui/system'
 import Checkbox from '@mui/material/Checkbox'
 import { InputAdornment, TextField } from '@mui/material'
 
-function History({ datas, textData }) {
-  const [text, setText] = useState('')
+
+function History({datas,textData,output}) {
+
+  const [text, setText] = useState('text')
+  const [isOpenDrawer, setDrawerState] = useState(false)
   const ref = createRef()
   const [checkedItems, setCheckedItems] = useState([])
   console.log(datas, 'datas')
@@ -142,29 +150,72 @@ function History({ datas, textData }) {
           minHeight: '30vmx',
           margin: '1rem',
           width: '100%',
-        }}
-      >
-        <TextField
-          id='outlined-textarea'
-          value={textData}
-          inputRef={ref}
-          multiline
-          fullWidth
-          rows={3}
-          maxRows={10}
-          InputProps={{
-            endAdornment: (
-              <InputAdornment position='end'>
-                <Tooltip title="コピー">
-                  <IconButton onClick={() => CopyToClickboard(ref.current.value)}>
-                    <ContentCopyIcon />
-                  </IconButton>
-                </Tooltip>
-              </InputAdornment>
-            ),
+
+        }}      >  
+        <Box className='drawerOn'>
+            <IconButton
+              onClick={() => {
+                setDrawerState(true);
+                output(datas);
+              }}>
+              <ExpandLessIcon />
+            </IconButton>
+          </Box>
+        <Box className='drawer'>
+        <Drawer
+          PaperProps={{sx: { height: "90%" },}}
+          hideBackdrop='true'
+          anchor='bottom'
+          open={isOpenDrawer}
+          onClose={() => {
+          setDrawerState(false)
+
           }}
-          sx={{ width: '470px' }}
-        />
+        >
+        <Box className='drawer'>
+          <IconButton 
+          id='drawerOff'
+          onClick={() => setDrawerState(false)}
+          >
+            <ExpandMoreIcon />
+          </IconButton>
+        </Box>
+        <Box className='aroundTextarea'>
+          <TextField
+              id='textarea'
+              // value={textData}
+              onChange={(e)=>{setText(e.target.value)}}
+              value={text}
+              inputRef={ref}
+              multiline
+              fullWidth
+              rows={16}
+              maxRows={50}
+              InputProps={{
+              endAdornment: (
+                <InputAdornment position='end'>
+                    <Tooltip title="コピー">
+                      <IconButton onClick={() => CopyToClickboard(ref.current.value)}>
+                        <ContentCopyIcon />
+                      </IconButton>
+                    </Tooltip>
+                    {/* <Tooltip title="ダウンロード">
+                      <IconButton onClick={() => {
+                                            download(ref.current.value);
+                                            console.log(ref.current.value);
+                                            console.log("okkkkkkkkkkkkkk");
+                                          }}>
+                        <DownloadIcon />
+                      </IconButton>
+                  </Tooltip> */}
+                </InputAdornment>
+              ),
+            }}
+            sx={{ width: '470px' }}
+          />
+        </Box>
+        </Drawer>
+        </Box>
       </Box>
     </>
   )

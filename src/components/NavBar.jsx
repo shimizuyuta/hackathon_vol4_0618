@@ -3,13 +3,11 @@ import Box from '@mui/material/Box'
 import Toolbar from '@mui/material/Toolbar'
 import IconButton from '@mui/material/IconButton'
 import Typography from '@mui/material/Typography'
-import DownloadIcon from '@mui/icons-material/Download'
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline'
-import UploadIcon from '@mui/icons-material/Upload'
 import LinkIcon from '@mui/icons-material/Link'
-import { download } from '../modules/index'
 import { copyURL } from '../modules/chrome'
 import Tooltip from '@mui/material/Tooltip'
+
 
 export default function NavBar({ datas, deleteStorage, output }) {
   return (
