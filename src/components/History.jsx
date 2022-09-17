@@ -14,12 +14,12 @@ import { deleteContent } from '../modules/chrome'
 import Drawer from '@mui/material/Drawer';
 import ExpandLessIcon from '@mui/icons-material/ExpandLess';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import DownloadIcon from '@mui/icons-material/Download'
-import { download } from '../modules/index'
+// import DownloadIcon from '@mui/icons-material/Download'
+// import { download } from '../modules/index'
 import Tooltip from '@mui/material/Tooltip';
 import { useState, useEffect, createRef } from 'react'
 
-function History({datas,textData}) {
+function History({datas,textData,output}) {
 
   const [text, setText] = useState('text')
   const [isOpenDrawer, setDrawerState] = useState(false)
@@ -83,7 +83,10 @@ function History({datas,textData}) {
         }}      >  
         <Box className='drawerOn'>
             <IconButton
-              onClick={() => setDrawerState(true)}>
+              onClick={() => {
+                setDrawerState(true);
+                output(datas);
+              }}>
               <ExpandLessIcon />
             </IconButton>
           </Box>
@@ -124,11 +127,15 @@ function History({datas,textData}) {
                         <ContentCopyIcon />
                       </IconButton>
                     </Tooltip>
-                    <Tooltip title="Txtでダウンロード">
-                      <IconButton onClick={() => download(ref.current.value)}>
+                    {/* <Tooltip title="ダウンロード">
+                      <IconButton onClick={() => {
+                                            download(ref.current.value);
+                                            console.log(ref.current.value);
+                                            console.log("okkkkkkkkkkkkkk");
+                                          }}>
                         <DownloadIcon />
                       </IconButton>
-                  </Tooltip>
+                  </Tooltip> */}
                 </InputAdornment>
               ),
             }}
