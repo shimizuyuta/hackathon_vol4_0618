@@ -9,28 +9,26 @@ import DeleteIcon from '@mui/icons-material/Delete'
 // import InputAdornment from '@mui/material/InputAdornment'
 import { CopyToClickboard } from '../modules/index'
 import { deleteContent } from '../modules/chrome'
-import Drawer from '@mui/material/Drawer';
-import ExpandLessIcon from '@mui/icons-material/ExpandLess';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import Drawer from '@mui/material/Drawer'
+import ExpandLessIcon from '@mui/icons-material/ExpandLess'
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
 // import DownloadIcon from '@mui/icons-material/Download'
 // import { download } from '../modules/index'
-import Tooltip from '@mui/material/Tooltip';
-import { useState, useEffect, createRef } from 'react'
+import Tooltip from '@mui/material/Tooltip'
+import { useState, useEffect, useRef } from 'react'
 import { Box } from '@mui/system'
 import Checkbox from '@mui/material/Checkbox'
 import { InputAdornment, TextField } from '@mui/material'
 
-
-function History({datas,textData,output}) {
-
+function History({ datas, textData, output }) {
   const [text, setText] = useState('text')
   const [isOpenDrawer, setDrawerState] = useState(false)
-  const ref = createRef()
   const [checkedItems, setCheckedItems] = useState([])
   console.log(datas, 'datas')
-  console.log('text',text)
+  console.log('text', text)
   //checked trueのitemだけが格納される
-  const [inputdata,setInputData] = useState([])
+  const ref = useRef([])
+  const [inputdata, setInputData] = useState([])
 
   //[{item: "'AA',", checked: false},{item: "'BB',", checked: false}]
   const handleChange = (e) => {
@@ -38,13 +36,16 @@ function History({datas,textData,output}) {
     checkedItems.map((checkedItem, index) => {
       console.log(checkedItem, 'checkedItemだよ')
       //☑が入っているとき→[{item: "'AA',", checked: true},{item: "'BB',", checked: false}]
-      if (checkedItem['item']===e.target.value && checkedItem['checked']===true) {
+      if (
+        checkedItem['item'] === e.target.value &&
+        checkedItem['checked'] === true
+      ) {
         checkedItem['checked'] = false
         zzz.push(checkedItem)
-      }else if(checkedItem['item']===e.target.value){
+      } else if (checkedItem['item'] === e.target.value) {
         checkedItem['checked'] = true
         zzz.push(checkedItem)
-      }else {
+      } else {
         //入ってないとき
         zzz.push(checkedItem)
         console.log('該当しないからそのまま配列に入る')
@@ -52,36 +53,42 @@ function History({datas,textData,output}) {
       setCheckedItems(zzz)
     })
   }
-  console.log('checkedItems調べ',checkedItems)
+  console.log('checkedItems調べ', checkedItems)
 
-  const deleteCheckedItem = (index,checkedItem) =>{
-    console.log(index,'index')
-    console.log(checkedItem,'checkedItem')
+  const deleteCheckedItem = (index, checkedItem) => {
+    console.log(index, 'index')
+    console.log(checkedItem, 'checkedItem')
     //ストレージから削除
     deleteContent(index)
     //   //[{item: "'AA',", checked: false},{item: "'BB',", checked: false}]
-    console.log(checkedItems,'checkedItems++')
-      checkedItems.splice(index,1)
-    console.log('更新後のcheckedItems',checkedItems)
+    console.log(checkedItems, 'checkedItems++')
+    checkedItems.splice(index, 1)
+    console.log('更新後のcheckedItems', checkedItems)
     setCheckedItems(checkedItems)
   }
 
-  const qqqq = () =>{
+  const qqqq = () => {
     console.log('click qqqqq')
     let bbbb = []
-    for(const elem of checkedItems){
-      console.log(elem,'elem')
-      if(elem['checked']===true){
+    for (const elem of checkedItems) {
+      console.log(elem, 'elem')
+      if (elem['checked'] === true) {
         console.log('true')
         bbbb.push(elem['item'])
       }
     }
     setInputData(bbbb)
+    // ref.current = inputdata
+    console.log(ref.current, 'ref++++++++++++++++')
   }
 
-  const bbb = () => {
-    console.log('fafa', checkedItems)
+  const handleChange2 = (e) => {
+    console.log('e000000', e.target)
+    console.log('e000000', e.target.value)
+    console.log(ref.current.value, 'handlechnage2')
+    console.log(ref.current, 'handlechnage2')
   }
+
   useEffect(() => {
     setText(textData)
   }, [textData])
@@ -91,12 +98,12 @@ function History({datas,textData,output}) {
     if (datas === undefined) {
       setCheckedItems([])
     } else {
-      console.log('ここ？',datas)
+      console.log('ここ？', datas)
       let sample = datas.map((data) => {
         return { item: data, checked: false }
       })
       console.log('これが追加されるお', [...sample])
-      setCheckedItems([ ...sample])
+      setCheckedItems([...sample])
     }
   }, [datas])
   //[]これは最初に呼ばれてるからダメ
@@ -149,7 +156,7 @@ function History({datas,textData,output}) {
                   <IconButton
                     onClick={() => {
                       // deleteContent(index)
-                      deleteCheckedItem(index,checkedItems[index])
+                      deleteCheckedItem(index, checkedItems[index])
                     }}
                   >
                     <DeleteIcon />
@@ -165,59 +172,57 @@ function History({datas,textData,output}) {
           minHeight: '30vmx',
           margin: '1rem',
           width: '100%',
-
-        }}      >  
+        }}
+      >
         <Box className='drawerOn'>
-            <IconButton
-              onClick={() => {
-                setDrawerState(true);
-                qqqq()
-              }}>
-              <ExpandLessIcon />
-            </IconButton>
-          </Box>
-        <Box className='drawer'>
-        <Drawer
-          PaperProps={{sx: { height: "90%" },}}
-          hideBackdrop='true'
-          anchor='bottom'
-          open={isOpenDrawer}
-          onClose={() => {
-          setDrawerState(false)
-
-          }}
-        >
-        <Box className='drawer'>
-          <IconButton 
-          id='drawerOff'
-          onClick={() => setDrawerState(false)}
+          <IconButton
+            onClick={() => {
+              setDrawerState(true)
+              qqqq()
+            }}
           >
-            <ExpandMoreIcon />
+            <ExpandLessIcon />
           </IconButton>
         </Box>
-        <Box className='aroundTextarea'>
-          <TextField
-              id='textarea'
-              // value={textData}
-              onChange={(e)=>{
-                console.log(e,'e++++')
-                setText(e.target.value)
-              }}
-              value={inputdata}
-              inputRef={ref}
-              multiline
-              fullWidth
-              rows={16}
-              maxRows={50}
-              InputProps={{
-              endAdornment: (
-                <InputAdornment position='end'>
-                    <Tooltip title="コピー">
-                      <IconButton onClick={() => CopyToClickboard(ref.current.value)}>
-                        <ContentCopyIcon />
-                      </IconButton>
-                    </Tooltip>
-                    {/* <Tooltip title="ダウンロード">
+        <Box className='drawer'>
+          <Drawer
+            PaperProps={{ sx: { height: '90%' } }}
+            hideBackdrop='true'
+            anchor='bottom'
+            open={isOpenDrawer}
+            onClose={() => {
+              setDrawerState(false)
+            }}
+          >
+            <Box className='drawer'>
+              <IconButton id='drawerOff' onClick={() => setDrawerState(false)}>
+                <ExpandMoreIcon />
+              </IconButton>
+            </Box>
+            <Box className='aroundTextarea'>
+              <TextField
+                id='textarea'
+                onChange={(e) => {
+                  console.log(e.target.value, 'e++++')
+                  handleChange2(e)
+                }}
+                defaultValue={inputdata}
+                inputRef={ref}
+                multiline
+                fullWidth
+                rows={16}
+                maxRows={50}
+                InputProps={{
+                  endAdornment: (
+                    <InputAdornment position='end'>
+                      <Tooltip title='コピー'>
+                        <IconButton
+                          onClick={() => CopyToClickboard(ref.current.value)}
+                        >
+                          <ContentCopyIcon />
+                        </IconButton>
+                      </Tooltip>
+                      {/* <Tooltip title="ダウンロード">
                       <IconButton onClick={() => {
                                             download(ref.current.value);
                                             console.log(ref.current.value);
@@ -226,13 +231,13 @@ function History({datas,textData,output}) {
                         <DownloadIcon />
                       </IconButton>
                   </Tooltip> */}
-                </InputAdornment>
-              ),
-            }}
-            sx={{ width: '470px' }}
-          />
-        </Box>
-        </Drawer>
+                    </InputAdornment>
+                  ),
+                }}
+                sx={{ width: '470px' }}
+              />
+            </Box>
+          </Drawer>
         </Box>
       </Box>
     </>
